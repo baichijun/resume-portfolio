@@ -1,7 +1,5 @@
-import {
-  AVATAR_OBJECT_POSITION,
-  AVATAR_SRC,
-} from "@/skins/shared/constants";
+import { AnimatePresence, motion } from "framer-motion";
+import { useHeroAvatar } from "@/context/AvatarContext";
 import { cn } from "@/lib/utils";
 
 /** 头像框变体 / Avatar frame variants per skin */
@@ -21,13 +19,15 @@ export interface HeroAvatarProps {
   pencilName?: string;
 }
 
-/** Hero 头像框：外框即裁剪区，img 绝对铺满 / Hero avatar frame with edge-to-edge cover */
+/** Hero 头像框：随机图源 + 3D 翻转切换 / Hero avatar with random source and flip transition */
 export function HeroAvatar({
   variant,
   alt,
   className,
   pencilName = "Hero/Avatar",
 }: HeroAvatarProps) {
+  const { src, objectPosition, revision } = useHeroAvatar();
+
   const frameClass = cn(
     "relative shrink-0 overflow-hidden",
     variant === "panel" && "skin-panel h-56 w-56 rounded-[var(--theme-radius)]",
@@ -45,20 +45,35 @@ export function HeroAvatar({
   );
 
   return (
-    <div data-pencil-name={pencilName} className={frameClass}>
+    <div
+      data-pencil-name={pencilName}
+      className={frameClass}
+      style={{ perspective: 800 }}
+    >
       {variant === "halo" && (
         <div
           className="pointer-events-none absolute -inset-4 rounded-full bg-[var(--theme-accent)] opacity-20 blur-2xl"
           aria-hidden
         />
       )}
-      <img
-        src={AVATAR_SRC}
-        alt={alt}
-        loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover"
-        style={{ objectPosition: AVATAR_OBJECT_POSITION }}
-      />
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={revision}
+          src={src}
+          alt={alt}
+          loading="lazy"
+          initial={{ opacity: 0, rotateY: -90 }}
+          animate={{ opacity: 1, rotateY: 0 }}
+          exit={{ opacity: 0, rotateY: 90 }}
+          transition={{ duration: 0.45, ease: [0.4, 0, 0.2, 1] }}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{
+            objectPosition,
+            backfaceVisibility: "hidden",
+            transformStyle: "preserve-3d",
+          }}
+        />
+      </AnimatePresence>
     </div>
   );
 }

@@ -2,13 +2,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import { AvatarProvider } from "./context/AvatarContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
-      <App />
+      <AvatarProvider>
+        <App />
+      </AvatarProvider>
     </ThemeProvider>
   </StrictMode>,
 );
