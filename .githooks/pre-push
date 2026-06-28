@@ -1,6 +1,6 @@
 #!/bin/sh
-# .cursor/plans 仅本地版本化，禁止推送到 GitHub / Local-only plans; block remote push
-zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+# Block push of .cursor/plans/*.plan.md / 禁止推送 Plan 文件到 GitHub
+zero=0000000000000000000000000000000000000000
 
 while read -r local_ref local_oid remote_ref remote_oid; do
   [ "$local_oid" = "$zero" ] && continue
@@ -11,8 +11,8 @@ while read -r local_ref local_oid remote_ref remote_oid; do
     range="$remote_oid..$local_oid"
   fi
 
-  if git diff-tree --no-commit-id --name-only -r "$range" 2>/dev/null | grep -qE '^\.cursor/plans/.*\.plan\.md$'; then
-    echo "error: .cursor/plans/*.plan.md is local-only. Remove plan files from commits before pushing."
+  if git log --format= --name-only "$range" | grep '.cursor/plans/' | grep -q '.plan.md'; then
+    echo "error: .cursor/plans/*.plan.md is local-only and must not be pushed to GitHub."
     exit 1
   fi
 done
