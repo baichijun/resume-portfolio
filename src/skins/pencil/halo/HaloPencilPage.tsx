@@ -20,14 +20,14 @@ export function HaloPencilPage() {
   return (
     <>
       <HaloBackground />
-      <SkinHeader className="border-indigo-100 bg-white/70" brand="Halo" />
+      <SkinHeader className="border-indigo-100 bg-white/70" />
       <main className="flex flex-col gap-12 lg:gap-[48px]">
         <HaloHero />
         <HaloAbout />
         <HaloProjects />
         <HaloContact />
       </main>
-      <SkinFooter>Pencil · Halo Design System</SkinFooter>
+      <SkinFooter />
       <ThemeSwitcher />
     </>
   );

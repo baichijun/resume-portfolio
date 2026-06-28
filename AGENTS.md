@@ -37,7 +37,7 @@ Cursor 规则（`.cursor/rules/`）：
 | `pencil-lunaris` | Pencil + Lunaris | [`src/skins/pencil/lunaris/`](src/skins/pencil/lunaris/) | [`design/UI-Pencil-Lunaris.pen`](design/UI-Pencil-Lunaris.pen) |
 | `pencil-halo` | Pencil + Halo | [`src/skins/pencil/halo/`](src/skins/pencil/halo/) | [`design/UI-Pencil-Halo.pen`](design/UI-Pencil-Halo.pen) |
 
-- 主题 CSS：[`src/index.css`](src/index.css) 内联 `[data-theme="..."]`（**不再**依赖 `*.generated.css`）
+- 主题 CSS：[`src/index.css`](src/index.css) 内联 `[data-theme="..."]`
 - 切换器：右下角分组 **Skill 皮肤 / Pencil 皮肤**
 - 旧稿归档：[`design/archive/`](design/archive/)（UI-Dark/Glass/Brutalist legacy）
 

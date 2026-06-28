@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { siteCopy } from "@/config/siteCopy";
 import { useResumeData } from "@/hooks/useResumeData";
 import { PlaceholderBadge } from "@/components/ui/PlaceholderBadge";
 import { cn } from "@/lib/utils";
@@ -48,10 +49,11 @@ interface HeroProps {
 export function ResumeHero({ layout = "split", panelClass = "skin-panel" }: HeroProps) {
   const data = useResumeData();
   const intro = data.summary.slice(0, 3).join("；");
+  const { hero } = siteCopy;
 
   return (
     <section
-      id="hero"
+      id={siteCopy.nav.hero.href.slice(1)}
       className="relative flex min-h-screen scroll-mt-24 items-center px-4 pt-24 sm:px-6 lg:px-8"
     >
       <div
@@ -69,7 +71,7 @@ export function ResumeHero({ layout = "split", panelClass = "skin-panel" }: Hero
           className={layout === "center" ? "mx-auto max-w-3xl" : ""}
         >
           <p className="mb-4 text-xs uppercase tracking-[0.25em] text-[var(--theme-text-muted)]">
-            Project Manager · PMO
+            {hero.roleLine}
           </p>
           <h1
             className={cn(
@@ -89,16 +91,16 @@ export function ResumeHero({ layout = "split", panelClass = "skin-panel" }: Hero
             )}
           >
             <a
-              href="#projects"
+              href={hero.ctaPrimaryHref}
               className="inline-flex items-center rounded-[var(--theme-radius)] bg-[var(--theme-accent)] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
             >
-              查看项目
+              {hero.ctaPrimary}
             </a>
             <a
-              href="#contact"
+              href={hero.ctaSecondaryHref}
               className="inline-flex items-center rounded-[var(--theme-radius)] border border-[var(--theme-border)] px-6 py-3 text-sm font-medium transition hover:bg-[var(--theme-card-hover)]"
             >
-              联系我
+              {hero.ctaSecondary}
             </a>
           </div>
         </motion.div>
@@ -131,12 +133,13 @@ export function ResumeHero({ layout = "split", panelClass = "skin-panel" }: Hero
 /** 关于我 / About section */
 export function ResumeAbout() {
   const data = useResumeData();
+  const { about } = siteCopy.sections;
 
   return (
-    <ResumeSection id="about" title="关于我" subtitle="个人优势、教育背景与核心技能">
+    <ResumeSection id={about.id} title={about.title} subtitle={about.subtitle}>
       <div className="grid gap-8 lg:grid-cols-2">
         <div className="skin-panel p-6">
-          <h3 className="mb-4 text-xl font-semibold">个人优势</h3>
+          <h3 className="mb-4 text-xl font-semibold">{about.summaryHeading}</h3>
           <ul className="space-y-3 text-[var(--theme-text-muted)]">
             {data.summary.map((item) => (
               <li key={item} className="flex gap-2">
@@ -147,7 +150,7 @@ export function ResumeAbout() {
           </ul>
         </div>
         <div className="skin-panel p-6">
-          <h3 className="mb-4 text-xl font-semibold">教育经历</h3>
+          <h3 className="mb-4 text-xl font-semibold">{about.educationHeading}</h3>
           <ul className="space-y-4">
             {data.education.map((edu) => (
               <li key={`${edu.school}-${edu.period}`} className="border-l-2 border-[var(--theme-accent)] pl-4">
@@ -160,7 +163,7 @@ export function ResumeAbout() {
         </div>
       </div>
       <div className="skin-panel mt-8 p-6">
-        <h3 className="mb-4 text-xl font-semibold">核心技能</h3>
+        <h3 className="mb-4 text-xl font-semibold">{about.skillsHeading}</h3>
         <div className="flex flex-wrap gap-2">
           {data.skills.map((skill) => (
             <span
@@ -179,9 +182,10 @@ export function ResumeAbout() {
 /** 项目经历 / Projects section */
 export function ResumeProjects() {
   const data = useResumeData();
+  const { projects } = siteCopy.sections;
 
   return (
-    <ResumeSection id="projects" title="项目经历" subtitle="智慧建筑、物联网与交通领域代表性项目">
+    <ResumeSection id={projects.id} title={projects.title} subtitle={projects.subtitle}>
       <div className="grid gap-8 md:grid-cols-2">
         {data.projects.map((project, index) => (
           <ProjectCard key={project.title} index={index} project={project} />
@@ -237,7 +241,7 @@ function ProjectCard({
             onClick={() => setExpanded((v) => !v)}
             className="mt-2 text-left text-sm text-[var(--theme-accent)] hover:underline"
           >
-            {expanded ? "收起" : "展开全文"}
+            {expanded ? siteCopy.projectCard.collapse : siteCopy.projectCard.expand}
           </button>
         )}
         <div className="mt-4 flex flex-wrap gap-2">
@@ -262,23 +266,25 @@ function ProjectCard({
 /** 联系方式 / Contact section */
 export function ResumeContact() {
   const data = useResumeData();
+  const { contact } = siteCopy.sections;
+  const missing = siteCopy.missing.fallback;
 
   return (
-    <ResumeSection id="contact" title="联系方式" subtitle="欢迎通过以下方式联系">
+    <ResumeSection id={contact.id} title={contact.title} subtitle={contact.subtitle}>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <a
           href={`mailto:${data.email}`}
           className="skin-panel block p-6 transition hover:bg-[var(--theme-card-hover)]"
         >
-          <p className="text-sm text-[var(--theme-text-muted)]">邮箱</p>
-          <p className="mt-2 font-semibold">{data.email || "待补充"}</p>
+          <p className="text-sm text-[var(--theme-text-muted)]">{contact.emailLabel}</p>
+          <p className="mt-2 font-semibold">{data.email || missing}</p>
         </a>
         <div className="skin-panel p-6">
-          <p className="text-sm text-[var(--theme-text-muted)]">电话</p>
-          <p className="mt-2 font-semibold">{data.phone || "待补充"}</p>
+          <p className="text-sm text-[var(--theme-text-muted)]">{contact.phoneLabel}</p>
+          <p className="mt-2 font-semibold">{data.phone || missing}</p>
         </div>
         <div className="skin-panel p-6">
-          <p className="text-sm text-[var(--theme-text-muted)]">GitHub</p>
+          <p className="text-sm text-[var(--theme-text-muted)]">{contact.githubLabel}</p>
           <PlaceholderBadge label="社交媒体链接" />
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { siteCopy } from "@/config/siteCopy";
 import { useResumeData } from "@/hooks/useResumeData";
 
 // LAYOUT: from export/desktop.html (2026-06-28)
@@ -6,10 +7,11 @@ import { useResumeData } from "@/hooks/useResumeData";
 /** Lunaris Hero 区 / Hero section aligned to Pencil export */
 export function LunarisHero() {
   const data = useResumeData();
+  const { hero } = siteCopy;
 
   return (
     <section
-      id="hero"
+      id={siteCopy.nav.hero.href.slice(1)}
       data-pencil-name="Hero"
       className="scroll-mt-24 px-4 pt-24 sm:px-6 lg:px-8"
     >
@@ -34,12 +36,12 @@ export function LunarisHero() {
           aria-hidden
         />
         <a
-          href="#projects"
+          href={hero.ctaPrimaryHref}
           data-pencil-name="Hero/CTA"
           className="box-border inline-flex w-fit shrink-0 rounded-[var(--theme-radius)] bg-[var(--theme-accent)] px-6 py-3 text-sm font-semibold text-[var(--theme-text)] transition hover:opacity-90"
           style={{ fontFamily: "var(--theme-font-body)" }}
         >
-          查看项目
+          {hero.ctaPrimary}
         </a>
       </div>
     </section>

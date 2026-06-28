@@ -19,14 +19,14 @@ export function ShadcnPencilPage() {
   return (
     <>
       <ShadcnBackground />
-      <SkinHeader className="bg-white/80" brand="Resume" />
+      <SkinHeader className="bg-white/80" />
       <main className="flex flex-col gap-12 lg:gap-[48px]">
         <ShadcnHero />
         <ShadcnAbout />
         <ShadcnProjects />
         <ShadcnContact />
       </main>
-      <SkinFooter>Pencil · Shadcn UI Design System</SkinFooter>
+      <SkinFooter />
       <ThemeSwitcher />
     </>
   );

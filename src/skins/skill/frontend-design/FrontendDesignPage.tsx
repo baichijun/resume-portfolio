@@ -35,7 +35,7 @@ export function FrontendDesignPage() {
   return (
     <>
       <FdBackground />
-      <SkinHeader className="bg-[rgba(12,10,9,0.85)]" brand="Portfolio" />
+      <SkinHeader className="bg-[rgba(12,10,9,0.85)]" />
       <main>
         <ResumeHero layout="editorial" panelClass="skin-panel p-6" />
         <ResumeAbout />

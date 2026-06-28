@@ -1,17 +1,19 @@
+import { siteCopy } from "@/config/siteCopy";
+
 /** Layer 名 ↔ ResumeData 字段对照 / Pencil layer to resume data bindings */
 export const SHADCN_LAYER_MAP = {
   "Hero/Headline": "name",
   "Hero/Tagline": "tagline",
-  "Hero/CTA": "anchor:#projects",
-  "Section/About": "static:关于我",
+  "Hero/CTA": `anchor:${siteCopy.hero.ctaPrimaryHref}`,
+  "Section/About": `static:${siteCopy.sections.about.title}`,
   "Card/About": "summary[]",
-  "Section/Projects": "static:项目经历",
+  "Section/Projects": `static:${siteCopy.sections.projects.title}`,
   "Card/Project": "projects[]",
   "Card/Project/Title": "projects[].title",
   "Card/Project/Meta": "projects[].period + projects[].company",
   "Card/Project/Description": "projects[].description",
   "Card/Project/Tags": "projects[].techStack[]",
-  "Section/Contact": "static:联系方式",
+  "Section/Contact": `static:${siteCopy.sections.contact.title}`,
   "Card/Contact/Email": "email",
   "Card/Contact/Phone": "phone",
 } as const;

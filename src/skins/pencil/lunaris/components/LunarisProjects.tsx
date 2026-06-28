@@ -1,3 +1,4 @@
+import { siteCopy } from "@/config/siteCopy";
 import type { ResumeProject } from "@/types/resume";
 import { useResumeData } from "@/hooks/useResumeData";
 
@@ -69,10 +70,11 @@ function LunarisProjectCard({ project }: { project: ResumeProject }) {
 /** Lunaris 项目经历 / Projects section aligned to Pencil export */
 export function LunarisProjects() {
   const data = useResumeData();
+  const { projects } = siteCopy.sections;
 
   return (
     <section
-      id="projects"
+      id={projects.id}
       data-pencil-name="Projects"
       className="scroll-mt-24 px-4 py-12 sm:px-6 lg:px-8"
     >
@@ -82,7 +84,7 @@ export function LunarisProjects() {
           className="text-2xl font-semibold text-[var(--theme-accent)] sm:text-[28px]/[normal]"
           style={{ fontFamily: "var(--theme-font-display)" }}
         >
-          项目经历
+          {projects.title}
         </h2>
         <div
           data-pencil-name="Section/Projects/List"

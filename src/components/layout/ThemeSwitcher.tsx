@@ -1,24 +1,26 @@
 import { useTheme } from "@/context/ThemeContext";
+import { siteCopy } from "@/config/siteCopy";
 import { cn } from "@/lib/utils";
 import type { ThemeId, ThemeSource } from "@/types/resume";
 
 /** 皮肤切换器 / Six-skin switcher grouped by Skill vs Pencil */
 export function ThemeSwitcher() {
   const { theme, setTheme, themes } = useTheme();
+  const { chrome } = siteCopy;
 
   const groups: { source: ThemeSource; label: string }[] = [
-    { source: "skill", label: "Skill 皮肤" },
-    { source: "pencil", label: "Pencil 皮肤" },
+    { source: "skill", label: chrome.themeGroupSkill },
+    { source: "pencil", label: chrome.themeGroupPencil },
   ];
 
   return (
     <div
       className="fixed bottom-6 right-6 z-50 max-h-[85vh] overflow-y-auto rounded-[var(--theme-radius)] border border-[var(--theme-border)] bg-[var(--theme-card)] p-2 shadow-[var(--theme-shadow)] backdrop-blur-md"
       role="group"
-      aria-label="切换 UI 皮肤"
+      aria-label={chrome.themeSwitcherAriaLabel}
     >
       <p className="border-b border-[var(--theme-border)] px-2 pb-2 pt-1 text-xs font-semibold text-[var(--theme-text)]">
-        UI 皮肤对比
+        {chrome.themeSwitcherTitle}
       </p>
       {groups.map((group) => (
         <div key={group.source} className="mb-2 last:mb-0">

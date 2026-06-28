@@ -25,7 +25,6 @@ export function DesignTastePage() {
       <TasteBackground />
       <SkinHeader
         className="border-b-2 border-[var(--theme-border)] bg-[var(--theme-bg)]"
-        brand="綦广名"
       />
       <main>
         <ResumeHero layout="split" panelClass="skin-panel-solid p-6" />
@@ -33,7 +32,7 @@ export function DesignTastePage() {
         <ResumeProjects />
         <ResumeContact />
       </main>
-      <SkinFooter>© {new Date().getFullYear()} · design-taste-frontend skin</SkinFooter>
+      <SkinFooter />
       <ThemeSwitcher />
     </>
   );

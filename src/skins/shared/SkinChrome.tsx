@@ -1,20 +1,19 @@
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { NAV_ITEMS } from "@/skins/shared/constants";
+import { formatFooterText, siteCopy } from "@/config/siteCopy";
+import { NAV_ITEMS } from "@/config/navigation";
+import { useResumeData } from "@/hooks/useResumeData";
 
 interface SkinHeaderProps {
-  brand?: string;
   className?: string;
   navClassName?: string;
 }
 
-/** 皮肤通用顶栏 / Shared sticky header for skin pages */
-export function SkinHeader({
-  brand = "Resume",
-  className,
-  navClassName,
-}: SkinHeaderProps) {
+/** 皮肤通用顶栏 / Shared sticky header; brand from resume name via site shell */
+export function SkinHeader({ className, navClassName }: SkinHeaderProps) {
+  const { name } = useResumeData();
   const [open, setOpen] = useState(false);
+  const { chrome } = siteCopy;
 
   return (
     <header
@@ -25,11 +24,11 @@ export function SkinHeader({
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <a
-          href="#hero"
+          href={siteCopy.nav.hero.href}
           className="text-lg font-bold"
           style={{ fontFamily: "var(--theme-font-display)" }}
         >
-          {brand}
+          {name}
         </a>
         <nav className={cn("hidden gap-6 md:flex", navClassName)}>
           {NAV_ITEMS.map((item) => (
@@ -47,9 +46,9 @@ export function SkinHeader({
           className="rounded border border-[var(--theme-border)] px-3 py-2 text-sm md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          aria-label="打开菜单"
+          aria-label={chrome.menuAriaLabel}
         >
-          {open ? "关闭" : "菜单"}
+          {open ? chrome.menuClose : chrome.menuOpen}
         </button>
       </div>
       {open && (
@@ -70,11 +69,13 @@ export function SkinHeader({
   );
 }
 
-/** 皮肤通用页脚 / Shared footer for skin pages */
-export function SkinFooter({ children }: { children?: ReactNode }) {
+/** 皮肤通用页脚 / Shared footer from site shell template */
+export function SkinFooter() {
+  const { name } = useResumeData();
+
   return (
     <footer className="border-t border-[var(--theme-border)] px-4 py-10 text-center text-sm text-[var(--theme-text-muted)]">
-      {children ?? `© ${new Date().getFullYear()} Resume Portfolio`}
+      {formatFooterText(name)}
     </footer>
   );
 }

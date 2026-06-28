@@ -1,3 +1,4 @@
+import { siteCopy } from "@/config/siteCopy";
 import { useResumeData } from "@/hooks/useResumeData";
 
 // LAYOUT: from export/desktop.html (2026-06-28)
@@ -6,10 +7,11 @@ import { useResumeData } from "@/hooks/useResumeData";
 /** Shadcn 关于我 / About section aligned to Pencil export */
 export function ShadcnAbout() {
   const data = useResumeData();
+  const { about } = siteCopy.sections;
 
   return (
     <section
-      id="about"
+      id={about.id}
       data-pencil-name="About"
       className="scroll-mt-24 px-4 py-12 sm:px-6 lg:px-8"
     >
@@ -19,7 +21,7 @@ export function ShadcnAbout() {
           className="text-2xl font-semibold text-[var(--theme-text)] sm:text-[32px]/[normal]"
           style={{ fontFamily: "var(--theme-font-display)" }}
         >
-          关于我
+          {about.title}
         </h2>
         <div
           data-pencil-name="Card/About"

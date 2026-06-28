@@ -122,7 +122,7 @@ Pencil 皮肤的 Layer 绑定约定见各目录：
 
 **注意**：`export_html` 的 `outputPath` 必须使用**项目绝对路径**，否则可能写到错误目录。
 
-**已停用**：`design:sync` / `*.generated.css` / Dark-Glass-Brutalist token 管道。主题变量现内联于 [`src/index.css`](../src/index.css)。
+主题变量内联于 [`src/index.css`](../src/index.css)。旧 Dark/Glass/Brutalist token 管道与 `*.generated.css` 已从仓库移除。
 
 ---
 
@@ -284,16 +284,9 @@ npm run pen:export:halo
 npm run capture:design-ref
 ```
 
-### 5.2 历史脚本（Dark/Glass/Brutalist，已归档）
+### 5.2 已移除的历史产物（Dark/Glass/Brutalist）
 
-| 脚本 | 状态 |
-|------|------|
-| `pen-bootstrap-dark.js` 等 | 仅参考；对应 `.pen` 在 `design/archive/` |
-| `import-pencil-variables.mjs` | 旧 token 管道 |
-| `sync-design-tokens.mjs` | 旧 `*.generated.css` 生成，**已停用** |
-| `pen-isolate-*.js`、`pen-strip-*.js` | 历史兜底 |
-
-`npm run design:sync*` 仍存在但**不再**是 Pencil 皮肤的主同步路径。
+旧三皮肤相关的 `design/tokens/`、`*.generated.css`、`design:sync*` 脚本与 `pen-bootstrap-{dark,glass,brutalist}.js` 等已从仓库删除。对应 `.pen` 仍保留在 [`design/archive/`](archive/) 供参考，不参与六皮肤构建。
 
 ---
 
@@ -354,8 +347,8 @@ npm run capture:design-ref
 | [src/index.css](../src/index.css) | 六皮肤主题 CSS 变量 |
 | [src/hooks/useResumeData.ts](../src/hooks/useResumeData.ts) | 简历 Markdown → 结构化数据 |
 | [src/lib/parseResume.ts](../src/lib/parseResume.ts) | Markdown 解析逻辑 |
-| `design/refs/*.png` | 六皮肤参考截图 |
-| `design/refs/layout.json` | 布局度量 |
+| `design/refs/*.png` | 六皮肤参考截图（`npm run capture:design-ref` 生成，未提交时可空目录） |
+| `design/refs/layout.json` | 布局度量（同上，可再生） |
 | `design/archive/` | UI-Dark/Glass/Brutalist 旧稿 |
 
 ---

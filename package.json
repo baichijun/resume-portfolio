@@ -11,10 +11,6 @@
     "deploy:cf": "npm run build && wrangler pages deploy dist",
     "deploy:cf:preview": "npm run build && wrangler pages deploy dist --branch=preview",
     "capture:design-ref": "node scripts/capture-design-ref.mjs",
-    "design:sync": "node scripts/sync-design-tokens.mjs",
-    "design:sync:dark": "node scripts/sync-design-tokens.mjs dark",
-    "design:sync:glass": "node scripts/sync-design-tokens.mjs glass",
-    "design:sync:brutalist": "node scripts/sync-design-tokens.mjs brutalist",
     "pen:export:shadcn": "node scripts/pen-export-theme.mjs shadcn",
     "pen:export:lunaris": "node scripts/pen-export-theme.mjs lunaris",
     "pen:export:halo": "node scripts/pen-export-theme.mjs halo"

@@ -21,14 +21,14 @@ export function LunarisPencilPage() {
   return (
     <>
       <LunarisBackground />
-      <SkinHeader className="bg-[rgba(13,17,23,0.9)]" brand="Lunaris" />
+      <SkinHeader className="bg-[rgba(13,17,23,0.9)]" />
       <main className="flex flex-col gap-12 lg:gap-[48px]">
         <LunarisHero />
         <LunarisAbout />
         <LunarisProjects />
         <LunarisContact />
       </main>
-      <SkinFooter>Pencil · Lunaris Design System</SkinFooter>
+      <SkinFooter />
       <ThemeSwitcher />
     </>
   );

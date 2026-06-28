@@ -1,6 +1,6 @@
 # Pencil export output
 
-Place `export_html` MCP output here:
+Place `export_html` MCP output here (not committed; regenerate on re-export):
 
 - `desktop.html` — Desktop frame export (`nodeId: HwWCW`)
 - `mobile.html` — Mobile frame export (optional)

@@ -1,3 +1,4 @@
+import { SiteMeta } from "@/components/layout/SiteMeta";
 import { useTheme } from "@/context/ThemeContext";
 import { PencilSkinPage } from "@/skins/pencil/PencilSkinPage";
 import { SkillSkinPage } from "@/skins/skill/SkillSkinPage";
@@ -6,9 +7,14 @@ import { SkillSkinPage } from "@/skins/skill/SkillSkinPage";
 export default function App() {
   const { theme, themeMeta } = useTheme();
 
-  if (themeMeta.source === "pencil") {
-    return <PencilSkinPage themeId={theme} />;
-  }
-
-  return <SkillSkinPage themeId={theme} />;
+  return (
+    <>
+      <SiteMeta />
+      {themeMeta.source === "pencil" ? (
+        <PencilSkinPage themeId={theme} />
+      ) : (
+        <SkillSkinPage themeId={theme} />
+      )}
+    </>
+  );
 }
