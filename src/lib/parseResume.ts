@@ -1,3 +1,4 @@
+/** 将 简历内容.md 解析为 ResumeData / Parse 简历内容.md into structured resume data */
 import type {
   ResumeData,
   ResumeEducation,
@@ -27,6 +28,7 @@ function extractPhone(line: string): string {
   return match?.[0] ?? "";
 }
 
+/** 按 ### 标题切分 Markdown 区块 / Split markdown by ### section headings */
 function splitSections(raw: string): Record<SectionKey, string> {
   const result = {} as Record<SectionKey, string>;
   const pattern = new RegExp(
@@ -45,6 +47,7 @@ function splitSections(raw: string): Record<SectionKey, string> {
   return result;
 }
 
+/** 解析姓名、标语、联系方式 / Parse name, tagline, phone, and email from header */
 function parseHeader(raw: string): Pick<
   ResumeData,
   "name" | "tagline" | "phone" | "email"
@@ -104,6 +107,7 @@ function parseEducation(text: string): ResumeEducation[] {
     });
 }
 
+/** 解析工作经历与 nested 职位结构 / Parse work history with nested roles and sections */
 function parseExperience(text: string): ResumeExperience[] {
   const blocks = text.split(/(?=生活帮|深圳市)/).filter(Boolean);
   const experiences: ResumeExperience[] = [];
@@ -161,6 +165,7 @@ function parseExperience(text: string): ResumeExperience[] {
   return experiences;
 }
 
+/** 解析项目经历块 / Parse project blocks from markdown section */
 function parseProjects(text: string): ResumeProject[] {
   const chunks = text.split(
     /(?=^[\u4e00-\u9fa5A-Za-z0-9].+\d{4}\.\d{2}\s*-\s*\d{4}\.\d{2})/m,
@@ -245,6 +250,7 @@ function extractSkills(summary: string[]): string[] {
   return [...found];
 }
 
+/** 汇总待补充字段，驱动 PlaceholderBadge / Collect missing fields for placeholder badges */
 function collectPlaceholders(data: Omit<ResumeData, "placeholders">): string[] {
   const missing: string[] = [];
 

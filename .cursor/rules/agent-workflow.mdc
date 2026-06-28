@@ -1,0 +1,19 @@
+---
+description: Agent 回答与改动规范 / Agent response and edit workflow
+alwaysApply: true
+---
+
+# Agent 工作流 / Agent workflow
+
+## 回答 / Responses
+
+- 动手改代码前，先用 1–3 句说明思路或方案
+- 需求有明显缺陷或有更优替代方案时，先指出再实现
+- 回答简洁；避免冗长铺垫
+
+## 代码改动 / Code edits
+
+- **最小 diff**：只改与任务相关的文件与行，不顺手重构无关代码
+- Agent 模式优先直接编辑文件，而非贴整文件
+- 用户明确要求完整文件时再输出全文
+- 遵循 [bilingual-comments.mdc](bilingual-comments.mdc) 与 [typescript-react.mdc](typescript-react.mdc)

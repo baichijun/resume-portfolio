@@ -1,3 +1,7 @@
+/**
+ * Pencil bootstrap for empty UI-Pencil-Halo.pen — Agent runs in Pencil, then Ctrl+S.
+ * 空 Halo .pen 稿 bootstrap：Agent 在 Pencil 中执行后保存。
+ */
 Delete("YKsGt")
 Delete("h0AMy")
 Delete("f6XvN")

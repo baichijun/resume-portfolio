@@ -1,0 +1,49 @@
+---
+description: TypeScript + React 编码规范 / TS and React standards
+globs: "**/*.{ts,tsx}"
+alwaysApply: true
+---
+
+# TypeScript + React 规范
+
+本项目：**Vite + React 19 + TypeScript + Tailwind**。优先清晰、可维护、类型安全；新代码遵循，存量逐步对齐。
+
+## 原则 / Principles
+
+- **KISS**：选最简单可行的方案，避免过度抽象
+- **DRY**：重复逻辑提取为 Hook、工具函数或可复用组件
+- **单一职责**：组件 / 模块各做一件事
+- **可读性优先**：命名要有描述性
+
+## TypeScript
+
+- 始终 TypeScript；`tsconfig` 已 `strict: true`
+- 禁止 `any`；不确定时用 `unknown` 并做类型收窄
+
+## 组件 / Components
+
+- 函数式组件 + Hooks；禁止 Class 组件
+- 文件名 PascalCase（如 `ThemeSwitcher.tsx`）
+- Props 接口命名 `ComponentNameProps`（如 `ThemeSwitcherProps`）
+- 单文件一事；超过约 200 行考虑拆分子组件或提取 Hook
+
+## 命名 / Naming
+
+- 变量、函数：camelCase
+- 模块级不可变配置 / 映射表：`UPPER_SNAKE_CASE`（如 `STORAGE_KEY`、`LUNARIS_LAYER_MAP`）
+- 布尔值：`is` / `has` / `should` / `can` 前缀（如 `isLoading`）
+- 事件处理：`handle` 前缀（如 `handleSubmit`）
+
+## 导入顺序 / Import order
+
+1. React / 核心库
+2. 第三方库
+3. 内部绝对路径（`@/…`）
+4. 相对路径
+5. 样式（若有）
+
+## 错误处理 / Errors
+
+- 禁止空 `catch` 块
+- `try…catch` 中须记录错误或向用户展示友好提示
+- 当前为静态展示站；引入 async / 解析 / 网络层时再考虑自定义 Error 类

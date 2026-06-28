@@ -5,6 +5,7 @@ import { LunarisContact } from "@/skins/pencil/lunaris/components/LunarisContact
 import { LunarisHero } from "@/skins/pencil/lunaris/components/LunarisHero";
 import { LunarisProjects } from "@/skins/pencil/lunaris/components/LunarisProjects";
 
+/** Lunaris 背景装饰 / Lunaris shell background accents */
 function LunarisBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">

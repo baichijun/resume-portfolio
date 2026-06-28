@@ -1,0 +1,67 @@
+---
+description: 代码注释必须中英双语 / Bilingual comments required
+alwaysApply: true
+---
+
+# 双语注释 / Bilingual Comments
+
+新增或修改代码时，**每个需要说明的注释块**必须同时包含中文和英文。
+
+## 格式 / Format
+
+- 单行：`// 中文说明 / English description`
+- 块注释：`/** 中文 / English */`
+- 同一语义只写一条注释，不要拆成两条
+
+## 适用范围 / Scope
+
+需要双语注释：
+
+- 文件头说明（非平凡模块）
+- 导出的组件、函数、Hook、Context
+- 非平凡业务逻辑、算法、副作用
+- CSS 主题块、Pencil layer 绑定等架构说明
+
+不必强行注释：
+
+- 自解释的一行代码（如 `const count = 0`）
+- 自动生成的 export HTML、第三方/vendor 代码
+- 纯 re-export 且无额外逻辑的文件
+
+## 注释内容 / Comment content
+
+- 优先解释 **为什么**（业务背景、权衡、workaround），而非重复代码在做什么
+- 代码本身应足够清晰；不要用注释替代码表达意图
+- 导出函数 / Hook / 组件：双语 `/** 中文 / English */` 即可；复杂 API 再补充 `@param` / `@returns`
+- Pencil 皮肤保留 `LAYOUT` / `BINDINGS` 工作流注释（可英文为主，新增块注释仍须双语）
+
+## 示例 / Examples
+
+```tsx
+// ❌ BAD — 仅中文或仅英文
+/** 皮肤切换器 */
+/** Theme switcher */
+
+// ✅ GOOD — 中英合并在一条
+/** 皮肤切换器 / Six-skin switcher grouped by Skill vs Pencil */
+export function ThemeSwitcher() { ... }
+```
+
+```tsx
+// LAYOUT: from export/desktop.html (2026-06-28)
+// BINDINGS: see layer-map.ts — Section/Projects, Card/Project
+
+/** 单项目卡片 / Single project card from Card/Project template */
+function ProjectCard() { ... }
+```
+
+```css
+/* skill-frontend-design: editorial dark / 编辑型深色 */
+[data-theme="skill-frontend-design"] { ... }
+```
+
+## 执行要求 / Enforcement
+
+- Agent 生成或编辑 `src/`、`scripts/` 下源码时，必须遵守本规则
+- 修改已有文件时， touched 的新增/改动注释也要符合格式
+- 不确定是否需要注释时：组件入口、Hook、复杂逻辑 → 加；简单赋值、 obvious JSX → 可省略

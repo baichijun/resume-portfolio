@@ -1,3 +1,4 @@
+/** 简历数据结构 + 六皮肤 ThemeId / Resume domain types and six-skin theme ids */
 export interface ResumeProject {
   title: string;
   period: string;

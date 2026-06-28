@@ -1,13 +1,19 @@
 # 个人简历网站
 
 ## 项目概述
-使用 React + TypeScript + Tailwind CSS 开发的个人简历/作品集网站。
+Vite + React 19 + TypeScript + Tailwind CSS 个人简历/作品集网站；六皮肤对比展示不同设计工具输出。
 
 ## 开发规范
-- 使用函数式组件 + Hooks
-- 使用 Tailwind CSS 编写样式
-- 组件要可复用
-- 代码要有中英文各一条注释
+
+Cursor 规则（`.cursor/rules/`）：
+
+| 规则 | 说明 |
+|------|------|
+| [bilingual-comments.mdc](.cursor/rules/bilingual-comments.mdc) | 双语注释格式与「why not what」 |
+| [typescript-react.mdc](.cursor/rules/typescript-react.mdc) | TS/React 命名、原则、导入顺序、错误处理 |
+| [agent-workflow.mdc](.cursor/rules/agent-workflow.mdc) | Agent 回答与最小 diff 改动 |
+
+要点：函数式组件 + Hooks · Tailwind 样式 · 组件可复用 · 新代码遵循上述规则，存量逐步对齐
 
 ## 设计要求
 - 项目目标：**对比多种 UI 设计工具/Skill 的输出**，通过皮肤切换直观看到差异

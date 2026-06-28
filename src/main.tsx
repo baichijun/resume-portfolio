@@ -1,3 +1,4 @@
+/** Vite 应用入口，挂载 ThemeProvider / Vite entry: mount app with theme context */
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";

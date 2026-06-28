@@ -191,6 +191,7 @@ export function ResumeProjects() {
   );
 }
 
+/** 可展开项目卡片，供 Skill 皮肤复用 / Expandable project card for skill skins */
 function ProjectCard({
   project,
   index,

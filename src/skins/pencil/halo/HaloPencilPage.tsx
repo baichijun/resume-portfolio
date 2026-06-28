@@ -5,6 +5,7 @@ import { HaloContact } from "@/skins/pencil/halo/components/HaloContact";
 import { HaloHero } from "@/skins/pencil/halo/components/HaloHero";
 import { HaloProjects } from "@/skins/pencil/halo/components/HaloProjects";
 
+/** Halo 背景光晕 / Soft luminous background for Halo pencil skin */
 function HaloBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">

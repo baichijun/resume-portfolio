@@ -1,3 +1,7 @@
+/**
+ * Restore Pencil welcome frame after bootstrap — run in Pencil when welcome was removed.
+ * 恢复 Pencil welcome 帧，bootstrap 后 welcome 被删时使用。
+ */
 Delete("YvzY9")
 Delete("f4aT9l")
 Delete("Qvz3o")

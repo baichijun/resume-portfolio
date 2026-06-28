@@ -5,6 +5,7 @@ import { ShadcnContact } from "@/skins/pencil/shadcn/components/ShadcnContact";
 import { ShadcnHero } from "@/skins/pencil/shadcn/components/ShadcnHero";
 import { ShadcnProjects } from "@/skins/pencil/shadcn/components/ShadcnProjects";
 
+/** Shadcn 背景渐变 / Subtle Shadcn-style page background */
 function ShadcnBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 bg-[var(--theme-bg)]">

@@ -9,6 +9,7 @@ import {
 } from "react";
 import type { ThemeId, ThemeMeta } from "@/types/resume";
 
+/** 六皮肤元数据，供切换器与路由使用 / Six-skin metadata for switcher and routing */
 export const THEMES: ThemeMeta[] = [
   {
     id: "skill-frontend-design",
@@ -65,6 +66,7 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
+/** 从 localStorage 恢复皮肤，无效时回退默认 / Restore theme from storage with fallback */
 function readStoredTheme(): ThemeId {
   if (typeof window === "undefined") return "skill-frontend-design";
   const stored = localStorage.getItem(STORAGE_KEY) as ThemeId | null;
@@ -107,6 +109,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   );
 }
 
+/** 读取皮肤上下文，须在 ThemeProvider 内使用 / Theme context hook; requires ThemeProvider */
 export function useTheme() {
   const ctx = useContext(ThemeContext);
   if (!ctx) throw new Error("useTheme must be used within ThemeProvider");

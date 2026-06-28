@@ -12,6 +12,7 @@ export function useResumeData(): ResumeData {
   return cached;
 }
 
+/** 非 Hook 场景同步读取缓存简历 / Sync resume access outside React components */
 export function getResumeData(): ResumeData {
   return useResumeData();
 }

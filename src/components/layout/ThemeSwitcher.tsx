@@ -17,6 +17,9 @@ export function ThemeSwitcher() {
       role="group"
       aria-label="切换 UI 皮肤"
     >
+      <p className="border-b border-[var(--theme-border)] px-2 pb-2 pt-1 text-xs font-semibold text-[var(--theme-text)]">
+        UI 皮肤对比
+      </p>
       {groups.map((group) => (
         <div key={group.source} className="mb-2 last:mb-0">
           <span className="block px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--theme-text-muted)]">

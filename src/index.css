@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
+/* 全局字体 token / Global font tokens for Tailwind theme */
 @theme {
   --font-display: "Syne", system-ui, sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
 }
 
+/* 平滑锚点滚动 / Smooth scroll for in-page anchor navigation */
 html {
   scroll-behavior: smooth;
 }
 
+/* 全局排版与主题色过渡 / Base typography and theme color transitions */
 body {
   margin: 0;
   min-height: 100vh;
