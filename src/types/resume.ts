@@ -41,10 +41,20 @@ export interface ResumeData {
   placeholders: string[];
 }
 
-export type ThemeId = "dark" | "glass" | "brutalist";
+export type ThemeId =
+  | "skill-frontend-design"
+  | "skill-ui-ux-pro-max"
+  | "skill-design-taste"
+  | "pencil-shadcn"
+  | "pencil-lunaris"
+  | "pencil-halo";
+
+export type ThemeSource = "skill" | "pencil";
 
 export interface ThemeMeta {
   id: ThemeId;
   label: string;
   description: string;
+  source: ThemeSource;
+  toolLabel: string;
 }

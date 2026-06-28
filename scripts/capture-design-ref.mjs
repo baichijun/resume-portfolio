@@ -12,7 +12,14 @@ const ROOT = path.resolve(__dirname, "..");
 const OUT_DIR = path.join(ROOT, "design", "refs");
 const BASE_URL = "http://localhost:5173/";
 
-const THEMES = ["dark", "glass", "brutalist"];
+const THEMES = [
+  "skill-frontend-design",
+  "skill-ui-ux-pro-max",
+  "skill-design-taste",
+  "pencil-shadcn",
+  "pencil-lunaris",
+  "pencil-halo",
+];
 const VIEWPORTS = [
   { name: "desktop", width: 1440, height: 900 },
   { name: "mobile", width: 390, height: 844 },
@@ -22,7 +29,6 @@ const SELECTORS = [
   "header",
   "#hero",
   "#hero h1",
-  "#hero .glass-panel, #hero .brutalist-panel",
   "#about",
   "#about h2",
   "#projects",

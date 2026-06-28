@@ -14,7 +14,10 @@
     "design:sync": "node scripts/sync-design-tokens.mjs",
     "design:sync:dark": "node scripts/sync-design-tokens.mjs dark",
     "design:sync:glass": "node scripts/sync-design-tokens.mjs glass",
-    "design:sync:brutalist": "node scripts/sync-design-tokens.mjs brutalist"
+    "design:sync:brutalist": "node scripts/sync-design-tokens.mjs brutalist",
+    "pen:export:shadcn": "node scripts/pen-export-theme.mjs shadcn",
+    "pen:export:lunaris": "node scripts/pen-export-theme.mjs lunaris",
+    "pen:export:halo": "node scripts/pen-export-theme.mjs halo"
   },
   "dependencies": {
     "clsx": "^2.1.1",

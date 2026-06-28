@@ -1,0 +1,170 @@
+{
+  "version": "2.14",
+  "children": [
+    {
+      "type": "frame",
+      "id": "N4q5X",
+      "x": 0,
+      "y": 0,
+      "name": "Desktop",
+      "width": 1440,
+      "height": 3200,
+      "fill": "$bg",
+      "layout": "vertical",
+      "gap": 48,
+      "padding": [
+        80,
+        48,
+        48,
+        48
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "WxN1v",
+          "name": "Hero/Headline",
+          "fill": "$text-primary",
+          "content": "綦广名",
+          "fontFamily": "$font-display",
+          "fontSize": 56,
+          "fontWeight": "800"
+        },
+        {
+          "type": "text",
+          "id": "ocuwc",
+          "name": "Hero/Tagline",
+          "fill": "$text-muted",
+          "content": "Halo · Soft luminous portfolio",
+          "fontFamily": "$font-body",
+          "fontSize": 18,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "Tztx9",
+          "name": "Hero/Glow",
+          "opacity": 0.15,
+          "width": 200,
+          "height": 200,
+          "fill": "$accent",
+          "cornerRadius": 999
+        },
+        {
+          "type": "text",
+          "id": "bqJF7",
+          "name": "Section/About",
+          "fill": "$accent",
+          "content": "关于我",
+          "fontFamily": "$font-display",
+          "fontSize": 30,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "PyoSw",
+          "name": "Card/About",
+          "width": 1344,
+          "fill": "$card-bg",
+          "cornerRadius": "$radius-md",
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "layout": "vertical",
+          "padding": 28,
+          "children": [
+            {
+              "type": "text",
+              "id": "Nr3Kz",
+              "name": "Body",
+              "fill": "$text-muted",
+              "content": "个人优势与技能摘要占位",
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "tygHS",
+      "x": 1600,
+      "y": 0,
+      "name": "Mobile",
+      "width": 390,
+      "height": 4000,
+      "fill": "$bg",
+      "layout": "vertical",
+      "gap": 32,
+      "padding": [
+        72,
+        16,
+        32,
+        16
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "x4RN7H",
+          "name": "Hero/Headline",
+          "fill": "$text-primary",
+          "content": "綦广名",
+          "fontFamily": "$font-display",
+          "fontSize": 34,
+          "fontWeight": "800"
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg": {
+      "type": "color",
+      "value": "#F0F4FF"
+    },
+    "bg-secondary": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#1E1B4B"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#6366F1"
+    },
+    "accent": {
+      "type": "color",
+      "value": "#6366F1"
+    },
+    "accent-secondary": {
+      "type": "color",
+      "value": "#A855F7"
+    },
+    "border": {
+      "type": "color",
+      "value": "#C7D2FE"
+    },
+    "card-bg": {
+      "type": "color",
+      "value": "#FFFFFFD9"
+    },
+    "radius-md": {
+      "type": "number",
+      "value": 20
+    },
+    "shadow": {
+      "type": "string",
+      "value": "0 12px 40px rgba(99, 102, 241, 0.12)"
+    },
+    "font-display": {
+      "type": "string",
+      "value": "Plus Jakarta Sans"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Plus Jakarta Sans"
+    }
+  },
+  "fileToken": "020c92fe-be99-48e5-861e-a3bc57de077f"
+}

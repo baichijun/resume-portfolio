@@ -1,0 +1,189 @@
+{
+  "version": "2.14",
+  "children": [
+    {
+      "type": "frame",
+      "id": "yc9zJ",
+      "x": 0,
+      "y": 0,
+      "name": "Desktop",
+      "width": 1440,
+      "height": 3200,
+      "fill": "$background",
+      "layout": "vertical",
+      "gap": 48,
+      "padding": [
+        80,
+        48,
+        48,
+        48
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "JeiRU",
+          "name": "Hero/Headline",
+          "fill": "$foreground",
+          "content": "綦广名",
+          "fontFamily": "$font-display",
+          "fontSize": 64,
+          "fontWeight": "700"
+        },
+        {
+          "type": "text",
+          "id": "n4CO63",
+          "name": "Hero/Tagline",
+          "fill": "$muted-foreground",
+          "content": "项目管理 · PMO",
+          "fontFamily": "$font-body",
+          "fontSize": 18,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "D75fu",
+          "name": "Hero/CTA",
+          "fill": "$primary",
+          "cornerRadius": "$radius-md",
+          "padding": [
+            12,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "N1G0kC",
+              "name": "Label",
+              "fill": "$primary-foreground",
+              "content": "查看项目",
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "EnOZ7",
+          "name": "Section/About",
+          "fill": "$foreground",
+          "content": "关于我",
+          "fontFamily": "$font-display",
+          "fontSize": 32,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "oWPaL",
+          "name": "Card/About",
+          "width": 1344,
+          "fill": "$card",
+          "cornerRadius": "$radius-md",
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "layout": "vertical",
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "Lmxt1",
+              "name": "Body",
+              "fill": "$muted-foreground",
+              "content": "个人优势与技能摘要占位",
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "mD6kn",
+          "name": "Section/Projects",
+          "fill": "$foreground",
+          "content": "项目经历",
+          "fontFamily": "$font-display",
+          "fontSize": 32,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "C54MKM",
+      "x": 1600,
+      "y": 0,
+      "name": "Mobile",
+      "width": 390,
+      "height": 4000,
+      "fill": "$background",
+      "layout": "vertical",
+      "gap": 32,
+      "padding": [
+        72,
+        16,
+        32,
+        16
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "gcjir",
+          "name": "Hero/Headline",
+          "fill": "$foreground",
+          "content": "綦广名",
+          "fontFamily": "$font-display",
+          "fontSize": 40,
+          "fontWeight": "700"
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "border": {
+      "type": "color",
+      "value": "#E4E4E7"
+    },
+    "radius-md": {
+      "type": "number",
+      "value": 8
+    },
+    "font-display": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "background": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "foreground": {
+      "type": "color",
+      "value": "#09090B"
+    },
+    "primary": {
+      "type": "color",
+      "value": "#18181B"
+    },
+    "primary-foreground": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "muted": {
+      "type": "color",
+      "value": "#F4F4F5"
+    },
+    "muted-foreground": {
+      "type": "color",
+      "value": "#71717A"
+    },
+    "card": {
+      "type": "color",
+      "value": "#FFFFFF"
+    }
+  },
+  "fileToken": "020c92fe-be99-48e5-861e-a3bc57de077f"
+}

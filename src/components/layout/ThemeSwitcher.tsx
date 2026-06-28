@@ -1,43 +1,47 @@
-import { cn } from "@/lib/utils";
 import { useTheme } from "@/context/ThemeContext";
-import type { ThemeId } from "@/types/resume";
+import { cn } from "@/lib/utils";
+import type { ThemeId, ThemeSource } from "@/types/resume";
 
-/** 皮肤切换器 / Floating theme skin switcher */
+/** 皮肤切换器 / Six-skin switcher grouped by Skill vs Pencil */
 export function ThemeSwitcher() {
   const { theme, setTheme, themes } = useTheme();
 
+  const groups: { source: ThemeSource; label: string }[] = [
+    { source: "skill", label: "Skill 皮肤" },
+    { source: "pencil", label: "Pencil 皮肤" },
+  ];
+
   return (
     <div
-      className={cn(
-        "fixed bottom-6 right-6 z-50 flex flex-col gap-2 p-2",
-        theme === "brutalist"
-          ? "border-4 border-black bg-white shadow-[6px_6px_0_#000]"
-          : "glass-panel shadow-[var(--theme-shadow)]",
-      )}
+      className="fixed bottom-6 right-6 z-50 max-h-[85vh] overflow-y-auto rounded-[var(--theme-radius)] border border-[var(--theme-border)] bg-[var(--theme-card)] p-2 shadow-[var(--theme-shadow)] backdrop-blur-md"
       role="group"
       aria-label="切换 UI 皮肤"
     >
-      <span className="px-2 text-xs font-medium text-[var(--theme-text-muted)]">
-        皮肤 Skin
-      </span>
-      {themes.map((t) => (
-        <button
-          key={t.id}
-          type="button"
-          onClick={() => setTheme(t.id as ThemeId)}
-          className={cn(
-            "rounded px-3 py-2 text-left text-sm transition",
-            theme === t.id
-              ? theme === "brutalist"
-                ? "bg-[var(--theme-accent)] font-bold text-white"
-                : "bg-[var(--theme-accent)]/20 text-[var(--theme-text)]"
-              : "text-[var(--theme-text-muted)] hover:text-[var(--theme-text)]",
-            theme === "brutalist" && theme !== t.id && "border-2 border-black",
-          )}
-          title={t.description}
-        >
-          {t.label}
-        </button>
+      {groups.map((group) => (
+        <div key={group.source} className="mb-2 last:mb-0">
+          <span className="block px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--theme-text-muted)]">
+            {group.label}
+          </span>
+          {themes
+            .filter((t) => t.source === group.source)
+            .map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setTheme(t.id as ThemeId)}
+                className={cn(
+                  "mb-1 w-full rounded px-3 py-2 text-left text-sm transition last:mb-0",
+                  theme === t.id
+                    ? "bg-[var(--theme-accent)] font-medium text-white"
+                    : "text-[var(--theme-text-muted)] hover:bg-[var(--theme-card-hover)] hover:text-[var(--theme-text)]",
+                )}
+                title={t.description}
+              >
+                <span className="block font-medium">{t.label}</span>
+                <span className="block text-[10px] opacity-80">{t.toolLabel}</span>
+              </button>
+            ))}
+        </div>
       ))}
     </div>
   );

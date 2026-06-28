@@ -5,10 +5,6 @@
   --font-body: "DM Sans", system-ui, sans-serif;
 }
 
-:root {
-  color-scheme: dark;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -24,9 +20,134 @@ body {
     color 0.4s ease;
 }
 
-@import "./styles/themes/dark.generated.css";
-@import "./styles/themes/glass.generated.css";
-@import "./styles/themes/brutalist.generated.css";
+/* skill-frontend-design: editorial dark / 编辑型深色 */
+[data-theme="skill-frontend-design"] {
+  color-scheme: dark;
+  --theme-bg: #0c0a09;
+  --theme-bg-secondary: #1c1917;
+  --theme-text: #fafaf9;
+  --theme-text-muted: #a8a29e;
+  --theme-accent: #e11d48;
+  --theme-accent-secondary: #fbbf24;
+  --theme-border: rgba(250, 250, 249, 0.12);
+  --theme-card: rgba(28, 25, 23, 0.85);
+  --theme-card-hover: rgba(225, 29, 72, 0.12);
+  --theme-radius: 0.25rem;
+  --theme-shadow: 0 24px 80px rgba(225, 29, 72, 0.15);
+  --theme-font-display: "Fraunces", Georgia, serif;
+  --theme-font-body: "DM Sans", system-ui, sans-serif;
+}
+
+/* skill-ui-ux-pro-max: structured SaaS / 结构化 SaaS */
+[data-theme="skill-ui-ux-pro-max"] {
+  color-scheme: dark;
+  --theme-bg: #0b1220;
+  --theme-bg-secondary: #111827;
+  --theme-text: #f1f5f9;
+  --theme-text-muted: #94a3b8;
+  --theme-accent: #3b82f6;
+  --theme-accent-secondary: #22d3ee;
+  --theme-border: rgba(148, 163, 184, 0.2);
+  --theme-card: rgba(17, 24, 39, 0.9);
+  --theme-card-hover: rgba(59, 130, 246, 0.15);
+  --theme-radius: 0.75rem;
+  --theme-shadow: 0 4px 24px rgba(15, 23, 42, 0.5);
+  --theme-font-display: "Inter", system-ui, sans-serif;
+  --theme-font-body: "Inter", system-ui, sans-serif;
+}
+
+/* skill-design-taste: anti-slop editorial / 反模板编辑风 */
+[data-theme="skill-design-taste"] {
+  color-scheme: light;
+  --theme-bg: #faf7f2;
+  --theme-bg-secondary: #ffffff;
+  --theme-text: #1c1917;
+  --theme-text-muted: #57534e;
+  --theme-accent: #c2410c;
+  --theme-accent-secondary: #0c4a6e;
+  --theme-border: #d6d3d1;
+  --theme-card: #ffffff;
+  --theme-card-hover: #ffedd5;
+  --theme-radius: 0;
+  --theme-shadow: 4px 4px 0 #1c1917;
+  --theme-font-display: "Libre Baskerville", Georgia, serif;
+  --theme-font-body: "IBM Plex Sans", system-ui, sans-serif;
+}
+
+/* pencil-shadcn: Shadcn semantic tokens / Shadcn 语义 token */
+[data-theme="pencil-shadcn"] {
+  color-scheme: light;
+  --theme-bg: #fafafa;
+  --theme-bg-secondary: #ffffff;
+  --theme-text: #09090b;
+  --theme-text-muted: #71717a;
+  --theme-accent: #18181b;
+  --theme-accent-secondary: #52525b;
+  --theme-border: #e4e4e7;
+  --theme-card: #ffffff;
+  --theme-card-hover: #f4f4f5;
+  --theme-radius: 0.5rem;
+  --theme-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --theme-font-display: "Inter", system-ui, sans-serif;
+  --theme-font-body: "Inter", system-ui, sans-serif;
+}
+
+/* pencil-lunaris: Lunaris dark shell / Lunaris 深色壳 */
+[data-theme="pencil-lunaris"] {
+  color-scheme: dark;
+  --theme-bg: #0d1117;
+  --theme-bg-secondary: #161b22;
+  --theme-text: #e6edf3;
+  --theme-text-muted: #8b949e;
+  --theme-accent: #7c6bf5;
+  --theme-accent-secondary: #58a6ff;
+  --theme-border: rgba(139, 148, 158, 0.25);
+  --theme-card: rgba(22, 27, 34, 0.95);
+  --theme-card-hover: rgba(124, 107, 245, 0.12);
+  --theme-radius: 0.625rem;
+  --theme-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --theme-font-display: "Geist", "Inter", system-ui, sans-serif;
+  --theme-font-body: "Geist", "Inter", system-ui, sans-serif;
+}
+
+/* pencil-halo: Halo soft luminous / Halo 柔和光感 */
+[data-theme="pencil-halo"] {
+  color-scheme: light;
+  --theme-bg: #f0f4ff;
+  --theme-bg-secondary: #ffffff;
+  --theme-text: #1e1b4b;
+  --theme-text-muted: #6366f1;
+  --theme-accent: #6366f1;
+  --theme-accent-secondary: #a855f7;
+  --theme-border: rgba(99, 102, 241, 0.2);
+  --theme-card: rgba(255, 255, 255, 0.85);
+  --theme-card-hover: rgba(99, 102, 241, 0.08);
+  --theme-radius: 1.25rem;
+  --theme-shadow: 0 12px 40px rgba(99, 102, 241, 0.12);
+  --theme-font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --theme-font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+[data-theme="skill-frontend-design"] body,
+[data-theme="skill-design-taste"] body,
+[data-theme="pencil-shadcn"] body,
+[data-theme="pencil-halo"] body {
+  font-family: var(--theme-font-body);
+}
+
+.skin-panel {
+  background: var(--theme-card);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--theme-radius);
+  box-shadow: var(--theme-shadow);
+}
+
+.skin-panel-solid {
+  background: var(--theme-card);
+  border: 2px solid var(--theme-border);
+  border-radius: var(--theme-radius);
+  box-shadow: var(--theme-shadow);
+}
 
 .gradient-text {
   background: linear-gradient(

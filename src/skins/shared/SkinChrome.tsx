@@ -1,26 +1,26 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { useTheme } from "@/context/ThemeContext";
+import { NAV_ITEMS } from "@/skins/shared/constants";
 
-const NAV_ITEMS = [
-  { href: "#hero", label: "首页" },
-  { href: "#about", label: "关于" },
-  { href: "#projects", label: "项目" },
-  { href: "#contact", label: "联系" },
-];
+interface SkinHeaderProps {
+  brand?: string;
+  className?: string;
+  navClassName?: string;
+}
 
-/** 顶部导航 / Sticky header with anchor navigation */
-export function Header() {
-  const { theme } = useTheme();
+/** 皮肤通用顶栏 / Shared sticky header for skin pages */
+export function SkinHeader({
+  brand = "Resume",
+  className,
+  navClassName,
+}: SkinHeaderProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md",
-        theme === "glass" && "border-[var(--theme-border)] bg-[rgba(15,23,42,0.7)]",
-        theme === "dark" && "border-[var(--theme-border)] bg-[rgba(10,10,10,0.8)]",
-        theme === "brutalist" && "border-b-4 border-black bg-[var(--theme-bg)]",
+        "fixed inset-x-0 top-0 z-50 border-b border-[var(--theme-border)] backdrop-blur-md",
+        className,
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
@@ -29,10 +29,9 @@ export function Header() {
           className="text-lg font-bold"
           style={{ fontFamily: "var(--theme-font-display)" }}
         >
-          Resume
+          {brand}
         </a>
-
-        <nav className="hidden gap-6 md:flex">
+        <nav className={cn("hidden gap-6 md:flex", navClassName)}>
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
@@ -43,15 +42,9 @@ export function Header() {
             </a>
           ))}
         </nav>
-
         <button
           type="button"
-          className={cn(
-            "md:hidden rounded px-3 py-2 text-sm",
-            theme === "brutalist"
-              ? "border-2 border-black bg-white font-bold"
-              : "border border-[var(--theme-border)]",
-          )}
+          className="rounded border border-[var(--theme-border)] px-3 py-2 text-sm md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="打开菜单"
@@ -59,7 +52,6 @@ export function Header() {
           {open ? "关闭" : "菜单"}
         </button>
       </div>
-
       {open && (
         <nav className="flex flex-col gap-2 border-t border-[var(--theme-border)] px-4 py-4 md:hidden">
           {NAV_ITEMS.map((item) => (
@@ -75,5 +67,14 @@ export function Header() {
         </nav>
       )}
     </header>
+  );
+}
+
+/** 皮肤通用页脚 / Shared footer for skin pages */
+export function SkinFooter({ children }: { children?: ReactNode }) {
+  return (
+    <footer className="border-t border-[var(--theme-border)] px-4 py-10 text-center text-sm text-[var(--theme-text-muted)]">
+      {children ?? `© ${new Date().getFullYear()} Resume Portfolio`}
+    </footer>
   );
 }

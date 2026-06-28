@@ -1,26 +1,14 @@
-import { BackgroundEffects } from "@/components/ui/BackgroundEffects";
-import { Footer } from "@/components/layout/Footer";
-import { Header } from "@/components/layout/Header";
-import { ThemeSwitcher } from "@/components/layout/ThemeSwitcher";
-import { About } from "@/components/sections/About";
-import { Contact } from "@/components/sections/Contact";
-import { Hero } from "@/components/sections/Hero";
-import { Projects } from "@/components/sections/Projects";
+import { useTheme } from "@/context/ThemeContext";
+import { PencilSkinPage } from "@/skins/pencil/PencilSkinPage";
+import { SkillSkinPage } from "@/skins/skill/SkillSkinPage";
 
-/** 应用根组件 / Application root composing all sections */
+/** 应用根组件 / Root app with skill vs pencil skin routing */
 export default function App() {
-  return (
-    <>
-      <BackgroundEffects />
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-      <ThemeSwitcher />
-    </>
-  );
+  const { theme, themeMeta } = useTheme();
+
+  if (themeMeta.source === "pencil") {
+    return <PencilSkinPage themeId={theme} />;
+  }
+
+  return <SkillSkinPage themeId={theme} />;
 }

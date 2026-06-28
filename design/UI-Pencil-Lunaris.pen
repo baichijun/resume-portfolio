@@ -1,0 +1,165 @@
+{
+  "version": "2.14",
+  "children": [
+    {
+      "type": "frame",
+      "id": "HwWCW",
+      "x": 0,
+      "y": 0,
+      "name": "Desktop",
+      "width": 1440,
+      "height": 3200,
+      "fill": "$bg",
+      "layout": "vertical",
+      "gap": 48,
+      "padding": [
+        80,
+        48,
+        48,
+        48
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "lIHAc",
+          "name": "Hero/Headline",
+          "fill": "$text-primary",
+          "content": "綦广名",
+          "fontFamily": "$font-display",
+          "fontSize": 60,
+          "fontWeight": "700"
+        },
+        {
+          "type": "text",
+          "id": "L50BsG",
+          "name": "Hero/Tagline",
+          "fill": "$text-muted",
+          "content": "Lunaris · Project Portfolio",
+          "fontFamily": "$font-body",
+          "fontSize": 18,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "PxGMh",
+          "name": "Shell/AccentBar",
+          "width": 120,
+          "height": 4,
+          "fill": "$accent",
+          "cornerRadius": 2
+        },
+        {
+          "type": "text",
+          "id": "TtIZK",
+          "name": "Section/About",
+          "fill": "$accent",
+          "content": "关于我",
+          "fontFamily": "$font-display",
+          "fontSize": 28,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "SLQRt",
+          "name": "Card/About",
+          "width": 1344,
+          "fill": "$card-bg",
+          "cornerRadius": "$radius-md",
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "layout": "vertical",
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "IP9kJ",
+              "name": "Body",
+              "fill": "$text-muted",
+              "content": "个人优势与技能摘要占位",
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Nbti6",
+      "x": 1600,
+      "y": 0,
+      "name": "Mobile",
+      "width": 390,
+      "height": 4000,
+      "fill": "$bg",
+      "layout": "vertical",
+      "gap": 32,
+      "padding": [
+        72,
+        16,
+        32,
+        16
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "LFXZ2",
+          "name": "Hero/Headline",
+          "fill": "$text-primary",
+          "content": "綦广名",
+          "fontFamily": "$font-display",
+          "fontSize": 36,
+          "fontWeight": "700"
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg": {
+      "type": "color",
+      "value": "#0D1117"
+    },
+    "bg-secondary": {
+      "type": "color",
+      "value": "#161B22"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#E6EDF3"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#8B949E"
+    },
+    "accent": {
+      "type": "color",
+      "value": "#7C6BF5"
+    },
+    "accent-secondary": {
+      "type": "color",
+      "value": "#58A6FF"
+    },
+    "border": {
+      "type": "color",
+      "value": "#30363D"
+    },
+    "card-bg": {
+      "type": "color",
+      "value": "#161B22"
+    },
+    "radius-md": {
+      "type": "number",
+      "value": 10
+    },
+    "font-display": {
+      "type": "string",
+      "value": "Geist"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Geist"
+    }
+  },
+  "fileToken": "020c92fe-be99-48e5-861e-a3bc57de077f"
+}
