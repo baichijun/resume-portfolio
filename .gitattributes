@@ -1,0 +1,2 @@
+# Keep shell hooks executable with LF on Windows / Windows 下保持 hook 为 LF
+.githooks/* text eol=lf
