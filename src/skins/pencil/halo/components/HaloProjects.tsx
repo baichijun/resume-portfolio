@@ -1,18 +1,51 @@
-import { getProjectDisplayTags, getProjectsBlock } from "@/lib/siteContentUtils";
+import { siteCopy } from "@/config/siteCopy";
+import {
+  handleProjectCardKeyDown,
+  ProjectCardDetailButton,
+} from "@/components/projects/ProjectCardActions";
+import { ProjectDetailModal } from "@/components/projects/ProjectDetailModal";
+import { useProjectDetailModal } from "@/hooks/useProjectDetailModal";
 import { useSiteContent } from "@/hooks/useSiteContent";
+import { getProjectsBlock } from "@/lib/siteContentUtils";
+import {
+  getProjectPreviewTags,
+  hasProjectDetail,
+  truncateProjectDescription,
+} from "@/lib/projectDisplay";
+import { cn } from "@/lib/utils";
 import type { ProjectItem } from "@/types/siteContent";
 
 // LAYOUT: from export/desktop.html (2026-06-28)
 // BINDINGS: see layer-map.ts — Section/Projects, Card/Project
 
 /** 单项目卡片 / Single project card from Card/Project template */
-function HaloProjectCard({ project }: { project: ProjectItem }) {
-  const tags = getProjectDisplayTags(project);
+function HaloProjectCard({
+  project,
+  onOpenDetail,
+}: {
+  project: ProjectItem;
+  onOpenDetail: (project: ProjectItem) => void;
+}) {
+  const { text: previewDesc } = truncateProjectDescription(project.description);
+  const tags = getProjectPreviewTags(project);
+  const showDetail = hasProjectDetail(project);
+  const highlightCount = project.highlights?.length ?? 0;
+
+  const handleOpen = () => {
+    if (showDetail) onOpenDetail(project);
+  };
 
   return (
     <article
       data-pencil-name="Card/Project"
-      className="box-border flex h-fit min-w-0 flex-1 flex-col gap-3 rounded-[var(--theme-radius)] border border-[var(--theme-border)] bg-[var(--theme-card)] p-7 shadow-[var(--theme-shadow)] backdrop-blur-sm"
+      className={cn(
+        "box-border flex h-full min-h-[16rem] min-w-0 flex-1 flex-col gap-3 rounded-[var(--theme-radius)] border border-[var(--theme-border)] bg-[var(--theme-card)] p-7 shadow-[var(--theme-shadow)] backdrop-blur-sm",
+        showDetail && "cursor-pointer",
+      )}
+      role={showDetail ? "button" : undefined}
+      tabIndex={showDetail ? 0 : undefined}
+      onClick={showDetail ? handleOpen : undefined}
+      onKeyDown={showDetail ? (event) => handleProjectCardKeyDown(event, handleOpen) : undefined}
     >
       <h3
         data-pencil-name="Title"
@@ -28,15 +61,18 @@ function HaloProjectCard({ project }: { project: ProjectItem }) {
       >
         {project.period}
         {project.company ? ` · ${project.company}` : ""}
+        {highlightCount > 0 && (
+          <span className="ml-1 opacity-80">
+            · {siteCopy.projectCard.highlightCount(highlightCount)}
+          </span>
+        )}
       </p>
       <p
         data-pencil-name="Description"
-        className="text-sm leading-relaxed text-[var(--theme-text-muted)]"
+        className="line-clamp-4 min-h-0 flex-1 text-sm leading-relaxed text-[var(--theme-text-muted)]"
         style={{ fontFamily: "var(--theme-font-body)" }}
       >
-        {project.description.length > 180
-          ? `${project.description.slice(0, 180)}…`
-          : project.description}
+        {previewDesc}
       </p>
       {tags.length > 0 && (
         <div
@@ -55,6 +91,13 @@ function HaloProjectCard({ project }: { project: ProjectItem }) {
           ))}
         </div>
       )}
+      {showDetail && (
+        <ProjectCardDetailButton
+          pencilName="Button/ViewDetail"
+          onOpen={handleOpen}
+          className="mt-auto text-left text-sm text-[var(--theme-accent)] hover:underline"
+        />
+      )}
     </article>
   );
 }
@@ -63,6 +106,7 @@ function HaloProjectCard({ project }: { project: ProjectItem }) {
 export function HaloProjects() {
   const content = useSiteContent();
   const projects = getProjectsBlock(content);
+  const { project, open, close } = useProjectDetailModal();
 
   if (!projects) return null;
 
@@ -82,13 +126,14 @@ export function HaloProjects() {
         </h2>
         <div
           data-pencil-name="Section/Projects/List"
-          className="box-border grid w-full shrink-0 grid-cols-1 gap-6 md:grid-cols-2"
+          className="box-border grid w-full shrink-0 grid-cols-1 items-stretch gap-6 md:grid-cols-2"
         >
-          {projects.items.map((project) => (
-            <HaloProjectCard key={project.title} project={project} />
+          {projects.items.map((projectItem) => (
+            <HaloProjectCard key={projectItem.title} project={projectItem} onOpenDetail={open} />
           ))}
         </div>
       </div>
+      <ProjectDetailModal project={project} onClose={close} />
     </section>
   );
 }

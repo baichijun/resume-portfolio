@@ -1,11 +1,18 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { siteCopy } from "@/config/siteCopy";
-import { useSiteContent } from "@/hooks/useSiteContent";
 import {
-  getPrimaryCta,
-  getProjectDisplayTags,
-} from "@/lib/siteContentUtils";
+  handleProjectCardKeyDown,
+  ProjectCardDetailButton,
+} from "@/components/projects/ProjectCardActions";
+import { ProjectDetailModal } from "@/components/projects/ProjectDetailModal";
+import { useProjectDetailModal } from "@/hooks/useProjectDetailModal";
+import { useSiteContent } from "@/hooks/useSiteContent";
+import { getPrimaryCta } from "@/lib/siteContentUtils";
+import {
+  getProjectPreviewTags,
+  hasProjectDetail,
+  truncateProjectDescription,
+} from "@/lib/projectDisplay";
 import { PlaceholderBadge } from "@/components/ui/PlaceholderBadge";
 import { cn } from "@/lib/utils";
 import { HeroAvatar } from "@/skins/shared/HeroAvatar";
@@ -204,13 +211,23 @@ function AboutBlockRenderer({ block }: { block: AboutBlock }) {
 }
 
 /** 可展开项目卡 / Expandable project card for skill skins */
-function SkillProjectCard({ project, index }: { project: ProjectItem; index: number }) {
-  const [expanded, setExpanded] = useState(false);
-  const shortDesc =
-    project.description.length > 160 && !expanded
-      ? `${project.description.slice(0, 160)}…`
-      : project.description;
-  const tags = getProjectDisplayTags(project);
+function SkillProjectCard({
+  project,
+  index,
+  onOpenDetail,
+}: {
+  project: ProjectItem;
+  index: number;
+  onOpenDetail: (project: ProjectItem) => void;
+}) {
+  const { text: previewDesc } = truncateProjectDescription(project.description);
+  const tags = getProjectPreviewTags(project);
+  const showDetail = hasProjectDetail(project);
+  const highlightCount = project.highlights?.length ?? 0;
+
+  const handleOpen = () => {
+    if (showDetail) onOpenDetail(project);
+  };
 
   return (
     <motion.article
@@ -218,9 +235,16 @@ function SkillProjectCard({ project, index }: { project: ProjectItem; index: num
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.08 }}
-      className="skin-panel group flex flex-col overflow-hidden"
+      className={cn(
+        "skin-panel group flex min-h-[22rem] h-[min(100%,28rem)] flex-col overflow-hidden",
+        showDetail && "cursor-pointer",
+      )}
+      role={showDetail ? "button" : undefined}
+      tabIndex={showDetail ? 0 : undefined}
+      onClick={showDetail ? handleOpen : undefined}
+      onKeyDown={showDetail ? (event) => handleProjectCardKeyDown(event, handleOpen) : undefined}
     >
-      <div className="relative aspect-video w-full overflow-hidden bg-[var(--theme-bg-secondary)]">
+      <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-[var(--theme-bg-secondary)]">
         <img
           src={`${BASE}images/placeholders/project.svg`}
           alt={`${project.title} 项目截图占位`}
@@ -231,22 +255,20 @@ function SkillProjectCard({ project, index }: { project: ProjectItem; index: num
           <PlaceholderBadge label="截图" />
         </div>
       </div>
-      <div className="flex flex-1 flex-col p-6">
+      <div className="flex min-h-0 flex-1 flex-col p-6">
         <div className="mb-2 flex flex-wrap items-start justify-between gap-2">
           <h3 className="text-lg font-bold">{project.title}</h3>
           <span className="text-xs text-[var(--theme-text-muted)]">{project.period}</span>
         </div>
-        <p className="text-sm text-[var(--theme-text-muted)]">{project.company}</p>
-        <p className="mt-3 flex-1 text-sm leading-relaxed">{shortDesc}</p>
-        {project.description.length > 160 && (
-          <button
-            type="button"
-            onClick={() => setExpanded((v) => !v)}
-            className="mt-2 text-left text-sm text-[var(--theme-accent)] hover:underline"
-          >
-            {expanded ? siteCopy.projectCard.collapse : siteCopy.projectCard.expand}
-          </button>
-        )}
+        <p className="text-sm text-[var(--theme-text-muted)]">
+          {project.company}
+          {highlightCount > 0 && (
+            <span className="ml-2 text-xs opacity-80">
+              · {siteCopy.projectCard.highlightCount(highlightCount)}
+            </span>
+          )}
+        </p>
+        <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed">{previewDesc}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.length > 0 ? (
             tags.map((tech) => (
@@ -261,6 +283,12 @@ function SkillProjectCard({ project, index }: { project: ProjectItem; index: num
             <PlaceholderBadge label="技术栈" />
           )}
         </div>
+        {showDetail && (
+          <ProjectCardDetailButton
+            onOpen={handleOpen}
+            className="mt-4 text-left text-sm text-[var(--theme-accent)] hover:underline"
+          />
+        )}
       </div>
     </motion.article>
   );
@@ -268,13 +296,21 @@ function SkillProjectCard({ project, index }: { project: ProjectItem; index: num
 
 /** Projects 块渲染 / Projects block renderer */
 function ProjectsBlockRenderer({ block }: { block: ProjectsBlock }) {
+  const { project, open, close } = useProjectDetailModal();
+
   return (
     <ContentSection id={block.id} title={block.title} subtitle={block.subtitle}>
-      <div className="grid gap-8 md:grid-cols-2">
-        {block.items.map((project, index) => (
-          <SkillProjectCard key={project.title} index={index} project={project} />
+      <div className="grid items-stretch gap-8 md:grid-cols-2">
+        {block.items.map((projectItem, index) => (
+          <SkillProjectCard
+            key={projectItem.title}
+            index={index}
+            project={projectItem}
+            onOpenDetail={open}
+          />
         ))}
       </div>
+      <ProjectDetailModal project={project} onClose={close} />
     </ContentSection>
   );
 }

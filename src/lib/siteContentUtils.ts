@@ -64,10 +64,9 @@ export function formatContentTemplate(
     .replaceAll("{year}", String(year));
 }
 
-/** 项目展示用标签 / Tags for project card display */
+/** 项目展示用标签 / Tags for project card display — real tags only */
 export function getProjectDisplayTags(item: ProjectsBlock["items"][number]): string[] {
-  if (item.tags.length > 0) return item.tags;
-  return item.highlights?.slice(0, 2) ?? [];
+  return item.tags;
 }
 
 /** 主 CTA / Primary CTA from hero ctas */

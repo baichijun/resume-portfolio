@@ -11,8 +11,11 @@ export const siteCopy = {
     themeGroupPencil: "Pencil 皮肤",
   },
   projectCard: {
-    expand: "展开全文",
-    collapse: "收起",
+    viewDetail: "查看详情",
+    closeDetail: "关闭",
+    highlightsHeading: "工作内容",
+    modalAriaLabel: "项目详情",
+    highlightCount: (count: number) => `${count} 项工作`,
   },
   missing: {
     fallback: "待补充",
