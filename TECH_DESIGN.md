@@ -39,6 +39,27 @@ scripts/pen-hydrate-content.ts
 - 网站内有内容空白时生成简易占位图文，并告诉我需要补充的部分
 - 内容与 UI 组件分离，方便在 Cursor 中手动更新 `site.json` 而无需修改皮肤逻辑
 
-## 部署事项
+## 部署
 
-- 可以考虑使用github hooks 处理多端部署的工作，当github有push事件时，自动触发CI/CD流程，生成新的版本并发布到多个平台。
+已实现 **GitHub Actions 三端 CI/CD**（2026-06-28 首次上线）：
+
+| 平台 | URL |
+|------|-----|
+| GitHub Pages | https://baichijun.github.io/resume-portfolio/ |
+| Cloudflare Pages | https://resume-portfolio-93i.pages.dev/ |
+| Vercel | https://resume-portfolio-powerdas-projects.vercel.app/ |
+
+- Workflow：[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) — 仅 `main` push / `workflow_dispatch`
+- 构建：`VITE_BASE_PATH=/`（CF/Vercel）；`/<repo>/`（GitHub Pages）
+- Vercel：`vercel build` + `deploy --prebuilt`；Git 自动部署已关闭
+- GitHub Pages：`upload-pages-artifact@v3` + `deploy-pages@v4`
+- Secrets 与运维：见 [DEPLOYMENT.md](DEPLOYMENT.md)
+
+## 分支
+
+| 分支 | 用途 |
+|------|------|
+| `main` | 生产 |
+| `feature03` | 框架和展现内容调优（当前） |
+
+详见 [docs/BRANCHES.md](docs/BRANCHES.md)。

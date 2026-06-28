@@ -11,9 +11,22 @@ Cursor 规则（`.cursor/rules/`）：
 |------|------|
 | [bilingual-comments.mdc](.cursor/rules/bilingual-comments.mdc) | 双语注释格式与「why not what」 |
 | [typescript-react.mdc](.cursor/rules/typescript-react.mdc) | TS/React 命名、原则、导入顺序、错误处理 |
-| [agent-workflow.mdc](.cursor/rules/agent-workflow.mdc) | Agent 回答与最小 diff 改动 |
+| [agent-workflow.mdc](.cursor/rules/agent-workflow.mdc) | Agent 回答、最小 diff、Plan 存档路径 |
 
 要点：函数式组件 + Hooks · Tailwind 样式 · 组件可复用 · 新代码遵循上述规则，存量逐步对齐
+
+## 仓库与协作
+
+| 项 | 说明 |
+|----|------|
+| 远端 | https://github.com/baichijun/resume-portfolio |
+| 生产分支 | `main`（push 触发三端部署） |
+| 当前开发 | `feature03` — 框架和展现内容调优版本 |
+| Plan 存档 | [`.cursor/plans/`](.cursor/plans/) — 本地 git，**禁止 push**（`.githooks/pre-push`） |
+| 分支说明 | [docs/BRANCHES.md](docs/BRANCHES.md) |
+| 部署详情 | [DEPLOYMENT.md](DEPLOYMENT.md) |
+
+克隆后启用本地 hook：`git config core.hooksPath .githooks`
 
 ## 数据流
 

@@ -66,9 +66,20 @@ Pencil 设计稿操作与踩坑见 [`design/PENCIL-GUIDE.md`](design/PENCIL-GUID
 | [TECH_DESIGN.md](TECH_DESIGN.md) | 技术栈与数据管理 |
 | [PRD-resume.md](PRD-resume.md) | 产品功能与内容模型 |
 | [DEPLOYMENT.md](DEPLOYMENT.md) | GitHub Pages / Cloudflare / Vercel 部署 |
+| [docs/BRANCHES.md](docs/BRANCHES.md) | 分支策略与当前开发线 |
 | [content/README.md](content/README.md) | `site.json` 块结构说明 |
 | [design/PENCIL-GUIDE.md](design/PENCIL-GUIDE.md) | Pencil + MCP 工作流 |
 
 ## 部署
 
-Push 到 `main` 触发 CI 三端发布，或本地见 [DEPLOYMENT.md](DEPLOYMENT.md)。内容变更需提交 `content/site.json` 后重新构建部署。
+**已上线三端**（2026-06-28）：push `main` 触发 CI 自动发布。
+
+| 端 | URL |
+|----|-----|
+| GitHub Pages | https://baichijun.github.io/resume-portfolio/ |
+| Cloudflare | https://resume-portfolio-93i.pages.dev/ |
+| Vercel | https://resume-portfolio-powerdas-projects.vercel.app/ |
+
+详情与 Secrets 维护见 [DEPLOYMENT.md](DEPLOYMENT.md)。内容变更需提交 `content/site.json` 后 push `main`。
+
+当前开发分支：**`feature03`**（框架和展现内容调优）— 见 [docs/BRANCHES.md](docs/BRANCHES.md)。

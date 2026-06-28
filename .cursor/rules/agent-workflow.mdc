@@ -17,3 +17,10 @@ alwaysApply: true
 - Agent 模式优先直接编辑文件，而非贴整文件
 - 用户明确要求完整文件时再输出全文
 - 遵循 [bilingual-comments.mdc](bilingual-comments.mdc) 与 [typescript-react.mdc](typescript-react.mdc)
+
+## Plan 模式 / Plan mode
+
+- Plan 模式产出的 `*.plan.md` **保存到** [`.cursor/plans/`](../plans/)（勿写入仓库根或 `docs/`）
+- **勿修改** Plan 工具自动生成的 frontmatter 路径（除非用户要求迁移）
+- Plans **可本地 git commit**，但 **禁止 push 到 GitHub**（见 [`.githooks/pre-push`](../../.githooks/pre-push)）
+- 推送前确认本次 commit 不含 `.cursor/plans/` 内变更；plans 与代码/doc 分 commit
