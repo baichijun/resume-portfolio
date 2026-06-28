@@ -1,0 +1,666 @@
+{
+  "version": "2.14",
+  "children": [
+    {
+      "type": "frame",
+      "id": "WzWh6",
+      "x": -2000,
+      "y": 0,
+      "name": "Component/Header",
+      "reusable": true,
+      "width": 1152,
+      "height": 61,
+      "fill": "#0F172AB3",
+      "stroke": "$border",
+      "strokeWidth": {
+        "bottom": 1
+      },
+      "effect": {
+        "type": "background_blur",
+        "radius": 16
+      },
+      "padding": [
+        0,
+        24
+      ],
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "dBmXK",
+          "name": "Logo",
+          "fill": "$text-primary",
+          "content": "Resume",
+          "fontFamily": "$font-display",
+          "fontSize": 18,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "up6yi",
+          "name": "Nav",
+          "gap": 24,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "RaHF2",
+              "name": "Nav Item",
+              "fill": "$text-muted",
+              "content": "首页 · 关于 · 项目 · 联系",
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "PLr2U",
+      "x": -2000,
+      "y": 100,
+      "name": "Component/HeaderMobile",
+      "reusable": true,
+      "width": 390,
+      "height": 61,
+      "fill": "#0F172ACC",
+      "stroke": "$border",
+      "strokeWidth": {
+        "bottom": 1
+      },
+      "effect": {
+        "type": "background_blur",
+        "radius": 16
+      },
+      "padding": [
+        0,
+        16
+      ],
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "MI7bg",
+          "name": "Logo",
+          "fill": "$text-primary",
+          "content": "Resume",
+          "fontFamily": "$font-display",
+          "fontSize": 18,
+          "fontWeight": "700"
+        },
+        {
+          "type": "text",
+          "id": "W7EtC",
+          "name": "Menu",
+          "fill": "$text-primary",
+          "content": "菜单",
+          "fontFamily": "$font-body",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ggqqZ",
+      "x": -2000,
+      "y": 200,
+      "name": "Component/Footer",
+      "reusable": true,
+      "width": 1152,
+      "stroke": "$border",
+      "strokeWidth": {
+        "top": 1
+      },
+      "layout": "vertical",
+      "gap": 8,
+      "padding": [
+        32,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "jBudq",
+          "name": "Copyright",
+          "fill": "$text-muted",
+          "content": "© 2026 Resume Portfolio",
+          "fontFamily": "$font-body",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "eqDys",
+      "x": -2000,
+      "y": 320,
+      "name": "Component/SectionTitle",
+      "reusable": true,
+      "width": 1152,
+      "layout": "vertical",
+      "gap": 12,
+      "children": [
+        {
+          "type": "text",
+          "id": "t2A8bf",
+          "name": "Title",
+          "fill": "$accent",
+          "content": "区块标题",
+          "fontFamily": "$font-display",
+          "fontSize": 36,
+          "fontWeight": "700"
+        },
+        {
+          "type": "text",
+          "id": "j8rrkI",
+          "name": "Subtitle",
+          "fill": "$text-muted",
+          "content": "区块副标题",
+          "fontFamily": "$font-body",
+          "fontSize": 16,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "FjUjh",
+      "x": -2000,
+      "y": 480,
+      "name": "Component/GlassCard",
+      "reusable": true,
+      "width": 400,
+      "fill": "$card-bg",
+      "cornerRadius": "$radius-md",
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "effect": {
+        "type": "background_blur",
+        "radius": 16
+      },
+      "layout": "vertical",
+      "gap": 16,
+      "padding": 24,
+      "children": [
+        {
+          "type": "text",
+          "id": "P7BWD",
+          "name": "Card Placeholder",
+          "fill": "$text-muted",
+          "content": "玻璃卡片",
+          "fontFamily": "$font-body",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "UC8VP",
+      "x": -2000,
+      "y": 640,
+      "name": "Component/ProjectCard",
+      "reusable": true,
+      "width": 360,
+      "fill": "$card-bg",
+      "cornerRadius": "$radius-md",
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "effect": {
+        "type": "background_blur",
+        "radius": 12
+      },
+      "layout": "vertical",
+      "gap": 12,
+      "padding": 24,
+      "children": [
+        {
+          "type": "text",
+          "id": "PxCHO",
+          "name": "Title",
+          "fill": "$text-primary",
+          "content": "项目名称",
+          "fontFamily": "$font-body",
+          "fontSize": 18,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "AeYRW",
+          "name": "Desc",
+          "fill": "$text-muted",
+          "content": "项目描述",
+          "fontFamily": "$font-body",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "V1kWmH",
+      "x": -2000,
+      "y": 820,
+      "name": "Component/ContactCard",
+      "reusable": true,
+      "width": 260,
+      "fill": "$card-bg",
+      "cornerRadius": "$radius-md",
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "effect": {
+        "type": "background_blur",
+        "radius": 12
+      },
+      "layout": "vertical",
+      "gap": 8,
+      "padding": 24,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "oNjad",
+          "name": "Label",
+          "fill": "$text-muted",
+          "content": "邮箱",
+          "fontFamily": "$font-body",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "ZPHx2",
+          "name": "Value",
+          "fill": "$text-primary",
+          "content": "hello@example.com",
+          "fontFamily": "$font-body",
+          "fontSize": 16,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "b3Bk7",
+      "x": -2000,
+      "y": 980,
+      "name": "Component/ButtonPrimary",
+      "reusable": true,
+      "fill": "$accent",
+      "cornerRadius": "$radius-md",
+      "padding": [
+        12,
+        24
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "I4iRW",
+          "name": "Label",
+          "fill": "#0F172A",
+          "content": "主要按钮",
+          "fontFamily": "$font-body",
+          "fontSize": 14,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "k3k7xB",
+      "x": -2000,
+      "y": 1060,
+      "name": "Component/ButtonSecondary",
+      "reusable": true,
+      "cornerRadius": "$radius-md",
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "padding": [
+        12,
+        24
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "IOSmH",
+          "name": "Label",
+          "fill": "$text-primary",
+          "content": "次要按钮",
+          "fontFamily": "$font-body",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "z2H7q",
+      "x": -2000,
+      "y": 1140,
+      "name": "Component/PlaceholderBadge",
+      "reusable": true,
+      "fill": "$card-hover",
+      "cornerRadius": 999,
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "padding": [
+        6,
+        12
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "H3K2M3",
+          "name": "Label",
+          "fill": "$text-muted",
+          "content": "待补充",
+          "fontFamily": "$font-body",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Y8VBJA",
+      "x": -2000,
+      "y": 1220,
+      "name": "Component/ThemeSwitcher",
+      "reusable": true,
+      "fill": "$card-bg",
+      "cornerRadius": "$radius-md",
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "effect": {
+        "type": "background_blur",
+        "radius": 12
+      },
+      "gap": 8,
+      "padding": 8,
+      "children": [
+        {
+          "type": "text",
+          "id": "H8Tjr",
+          "name": "Label",
+          "fill": "$text-muted",
+          "content": "Dark · Glass · Brutalist",
+          "fontFamily": "$font-body",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "M6rTwt",
+      "x": 0,
+      "y": 0,
+      "name": "Desktop",
+      "width": 1440,
+      "height": 5008,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "KKxQ6",
+          "layoutPosition": "absolute",
+          "x": 0,
+          "y": 0,
+          "name": "Background",
+          "width": 1440,
+          "height": 5008,
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "F71bjL",
+              "x": -128,
+              "y": 80,
+              "name": "Blur Sky",
+              "fill": "#0EA5E933",
+              "width": 384,
+              "height": 384,
+              "effect": {
+                "type": "blur",
+                "radius": 64
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "c7J9C",
+              "x": 1100,
+              "y": 3200,
+              "name": "Blur Violet",
+              "fill": "#8B5CF633",
+              "width": 320,
+              "height": 320,
+              "effect": {
+                "type": "blur",
+                "radius": 64
+              }
+            }
+          ]
+        },
+        {
+          "id": "oYGEw",
+          "type": "ref",
+          "ref": "WzWh6",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "AysaW",
+          "name": "Hero",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            96,
+            32,
+            80,
+            32
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Ah7ul",
+              "name": "Headline",
+              "fill": "$text-primary",
+              "content": "测试开发工程师",
+              "textAlign": "center",
+              "fontFamily": "$font-display",
+              "fontSize": 72,
+              "fontWeight": "800"
+            },
+            {
+              "id": "lHpxi",
+              "type": "ref",
+              "ref": "b3Bk7",
+              "name": "CTA Primary"
+            }
+          ]
+        },
+        {
+          "id": "viHhD",
+          "type": "ref",
+          "ref": "eqDys",
+          "name": "About Title"
+        },
+        {
+          "id": "hTcO3",
+          "type": "ref",
+          "ref": "FjUjh",
+          "name": "About Card",
+          "width": 1152
+        },
+        {
+          "id": "YPsDu",
+          "type": "ref",
+          "ref": "eqDys",
+          "name": "Projects Title"
+        },
+        {
+          "id": "EGST4",
+          "type": "ref",
+          "ref": "UC8VP",
+          "name": "Project 1"
+        },
+        {
+          "id": "Aoe52",
+          "type": "ref",
+          "ref": "ggqqZ",
+          "name": "Footer",
+          "width": "fill_container"
+        },
+        {
+          "id": "pRYgv",
+          "type": "ref",
+          "ref": "Y8VBJA",
+          "name": "Theme Switcher"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ikfyY",
+      "x": 1600,
+      "y": 0,
+      "name": "Mobile",
+      "width": 390,
+      "height": 7187,
+      "fill": "$bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "s2HRm",
+          "type": "ref",
+          "ref": "PLr2U",
+          "name": "Header Mobile",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "bADuY",
+          "name": "Hero",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            96,
+            16,
+            48,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "jtBlU",
+              "name": "Headline",
+              "fill": "$text-primary",
+              "content": "测试开发工程师",
+              "textAlign": "center",
+              "fontFamily": "$font-display",
+              "fontSize": 48,
+              "fontWeight": "800"
+            }
+          ]
+        },
+        {
+          "id": "DMI2P",
+          "type": "ref",
+          "ref": "eqDys",
+          "name": "About Title",
+          "width": 358
+        },
+        {
+          "id": "c8U60",
+          "type": "ref",
+          "ref": "FjUjh",
+          "name": "About Card",
+          "width": 358
+        },
+        {
+          "id": "R69fGj",
+          "type": "ref",
+          "ref": "ggqqZ",
+          "name": "Footer",
+          "width": "fill_container"
+        },
+        {
+          "id": "Kcyrp",
+          "type": "ref",
+          "ref": "Y8VBJA",
+          "name": "Theme Switcher"
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg": {
+      "type": "color",
+      "value": "#0F172A"
+    },
+    "bg-secondary": {
+      "type": "color",
+      "value": "#FFFFFF0F"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#F8FAFC"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#94A3B8"
+    },
+    "accent": {
+      "type": "color",
+      "value": "#38BDF8"
+    },
+    "accent-secondary": {
+      "type": "color",
+      "value": "#A78BFA"
+    },
+    "border": {
+      "type": "color",
+      "value": "#FFFFFF2E"
+    },
+    "card-bg": {
+      "type": "color",
+      "value": "#FFFFFF14"
+    },
+    "card-hover": {
+      "type": "color",
+      "value": "#FFFFFF24"
+    },
+    "radius-md": {
+      "type": "number",
+      "value": 20
+    },
+    "shadow": {
+      "type": "string",
+      "value": "0 8px 32px rgba(0, 0, 0, 0.3)"
+    },
+    "font-display": {
+      "type": "string",
+      "value": "Syne"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "DM Sans"
+    }
+  },
+  "fileToken": "38426b47-f723-4cc3-be29-f53d797b5fe1"
+}

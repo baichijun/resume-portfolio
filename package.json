@@ -1,0 +1,39 @@
+{
+  "name": "resume-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "build:gh": "cross-env VITE_BASE_PATH=/resume/ vite build",
+    "preview": "vite preview",
+    "deploy:cf": "npm run build && wrangler pages deploy dist",
+    "deploy:cf:preview": "npm run build && wrangler pages deploy dist --branch=preview",
+    "capture:design-ref": "node scripts/capture-design-ref.mjs",
+    "design:sync": "node scripts/sync-design-tokens.mjs",
+    "design:sync:dark": "node scripts/sync-design-tokens.mjs dark",
+    "design:sync:glass": "node scripts/sync-design-tokens.mjs glass",
+    "design:sync:brutalist": "node scripts/sync-design-tokens.mjs brutalist"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.12",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "cross-env": "^10.0.0",
+    "playwright": "^1.61.1",
+    "tailwindcss": "^4.1.12",
+    "typescript": "~5.8.3",
+    "vite": "^7.1.2",
+    "wrangler": "^4.33.0"
+  }
+}

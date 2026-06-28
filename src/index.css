@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  background: var(--theme-bg);
+  color: var(--theme-text);
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+@import "./styles/themes/dark.generated.css";
+@import "./styles/themes/glass.generated.css";
+@import "./styles/themes/brutalist.generated.css";
+
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--theme-accent),
+    var(--theme-accent-secondary)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass-panel {
+  background: var(--theme-card);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--theme-radius);
+  backdrop-filter: blur(16px);
+}
+
+.brutalist-panel {
+  background: var(--theme-card);
+  border: 3px solid var(--theme-border);
+  border-radius: var(--theme-radius);
+  box-shadow: var(--theme-shadow);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-border {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--theme-accent),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}

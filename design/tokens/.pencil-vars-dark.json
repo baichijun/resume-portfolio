@@ -1,0 +1,17 @@
+{
+  "variables": {
+    "accent": { "type": "color", "value": "#8B5CF6" },
+    "accent-secondary": { "type": "color", "value": "#06B6D4" },
+    "bg": { "type": "color", "value": "#0A0A0A" },
+    "bg-secondary": { "type": "color", "value": "#111111" },
+    "border": { "type": "color", "value": "#FFFFFF1A" },
+    "card-bg": { "type": "color", "value": "#FFFFFF0A" },
+    "card-hover": { "type": "color", "value": "#FFFFFF14" },
+    "font-body": { "type": "string", "value": "DM Sans" },
+    "font-display": { "type": "string", "value": "Syne" },
+    "radius-md": { "type": "number", "value": 16 },
+    "shadow": { "type": "string", "value": "0 0 40px rgba(139, 92, 246, 0.15)" },
+    "text-muted": { "type": "color", "value": "#A3A3A3" },
+    "text-primary": { "type": "color", "value": "#FFFFFF" }
+  }
+}

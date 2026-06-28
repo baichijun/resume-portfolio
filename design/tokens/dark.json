@@ -1,0 +1,18 @@
+{
+  "themeId": "dark",
+  "sourcePen": "design/UI-Dark.pen",
+  "variables": {
+    "--theme-bg": "#0a0a0a",
+    "--theme-bg-secondary": "#111111",
+    "--theme-text": "#ffffff",
+    "--theme-text-muted": "#a3a3a3",
+    "--theme-accent": "#8b5cf6",
+    "--theme-accent-secondary": "#06b6d4",
+    "--theme-border": "rgba(255, 255, 255, 0.1)",
+    "--theme-card": "rgba(255, 255, 255, 0.04)",
+    "--theme-card-hover": "rgba(255, 255, 255, 0.08)",
+    "--theme-radius": 16,
+    "--theme-shadow": "0 0 40px rgba(139, 92, 246, 0.15)",
+    "--theme-font-display": "Syne"
+  }
+}

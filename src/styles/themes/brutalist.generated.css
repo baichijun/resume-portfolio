@@ -1,0 +1,15 @@
+/* AUTO-GENERATED from design/tokens/brutalist.json — do not edit */
+[data-theme="brutalist"] {
+  --theme-bg: #f5f0e8;
+  --theme-bg-secondary: #ffffff;
+  --theme-text: #000000;
+  --theme-text-muted: #333333;
+  --theme-accent: #ff3300;
+  --theme-accent-secondary: #000000;
+  --theme-border: #000000;
+  --theme-card: #ffffff;
+  --theme-card-hover: #ffff00;
+  --theme-radius: 0;
+  --theme-shadow: 6px 6px 0 #000000;
+  --theme-font-display: var(--font-display);
+}
