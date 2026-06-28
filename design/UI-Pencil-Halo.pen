@@ -82,6 +82,283 @@
               "fontWeight": "normal"
             }
           ]
+        },
+        {
+          "type": "frame",
+          "id": "i8F00X",
+          "name": "Hero/CTA",
+          "fill": "$accent",
+          "cornerRadius": 999,
+          "padding": [
+            14,
+            28
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "LOq2Q",
+              "name": "Label",
+              "fill": "$bg-secondary",
+              "content": "查看项目",
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "y3UwkN",
+          "name": "Section/Projects",
+          "fill": "$accent",
+          "content": "项目经历",
+          "fontFamily": "$font-display",
+          "fontSize": 30,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "fwyur",
+          "name": "Section/Projects/List",
+          "width": 1344,
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "taPqW",
+              "name": "Card/Project",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 28,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "jtRFQ",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "物联网管控运维平台",
+                  "fontFamily": "$font-display",
+                  "fontSize": 18,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "XOBam",
+                  "name": "Meta",
+                  "fill": "$text-muted",
+                  "content": "2020.04 - 2021.04 · 深圳市安冠科技",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Fa3n1",
+                  "name": "Description",
+                  "fill": "$text-muted",
+                  "content": "BS 架构项目组合案例，智能建筑物联网云操作系统与综合监控平台。",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "wsP8c",
+                  "name": "Tags",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Y07pAo",
+                      "name": "Tag",
+                      "fill": "$accent-secondary",
+                      "content": "PMO",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "pUSnw",
+                      "name": "Tag",
+                      "fill": "$accent-secondary",
+                      "content": "物联网",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qGSHy",
+              "name": "Card/Project",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 28,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "J50Pk",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "龙华有轨电车-智慧运维",
+                  "fontFamily": "$font-display",
+                  "fontSize": 18,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "JyN0J",
+                  "name": "Meta",
+                  "fill": "$text-muted",
+                  "content": "2018.05 - 2020.07 · 深圳市安冠科技",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Fln8f",
+                  "name": "Description",
+                  "fill": "$text-muted",
+                  "content": "交通领域智慧运维平台，全生命周期项目管理与交付。",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "vfLj5",
+                  "name": "Tags",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "k4KtiY",
+                      "name": "Tag",
+                      "fill": "$accent-secondary",
+                      "content": "交通",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "s5b8im",
+                      "name": "Tag",
+                      "fill": "$accent-secondary",
+                      "content": "运维",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "pU8og",
+          "name": "Section/Contact",
+          "fill": "$accent",
+          "content": "联系方式",
+          "fontFamily": "$font-display",
+          "fontSize": 30,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "Ig8Nb",
+          "name": "Section/Contact/List",
+          "width": 1344,
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "S55V3",
+              "name": "Card/Contact/Email",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 28,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "fnfQ3",
+                  "name": "Label",
+                  "fill": "$text-muted",
+                  "content": "邮箱",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Z4gIQ0",
+                  "name": "Value",
+                  "fill": "$text-primary",
+                  "content": "470905939@qq.com",
+                  "fontFamily": "$font-body",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "E92JSi",
+              "name": "Card/Contact/Phone",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 28,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "XSkeB",
+                  "name": "Label",
+                  "fill": "$text-muted",
+                  "content": "电话",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "t7KeT",
+                  "name": "Value",
+                  "fill": "$text-primary",
+                  "content": "17722561124",
+                  "fontFamily": "$font-body",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -112,6 +389,238 @@
           "fontFamily": "$font-display",
           "fontSize": 34,
           "fontWeight": "800"
+        },
+        {
+          "type": "text",
+          "id": "pfYRh",
+          "name": "Hero/Tagline",
+          "fill": "$text-muted",
+          "content": "项目管理 · PMO",
+          "fontFamily": "$font-body",
+          "fontSize": 16,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "orbGq",
+          "name": "Hero/Glow",
+          "opacity": 0.15,
+          "width": 120,
+          "height": 120,
+          "fill": "$accent",
+          "cornerRadius": 999
+        },
+        {
+          "type": "frame",
+          "id": "lgJxI",
+          "name": "Hero/CTA",
+          "fill": "$accent",
+          "cornerRadius": 999,
+          "padding": [
+            12,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "wEhzp",
+              "name": "Label",
+              "fill": "$bg-secondary",
+              "content": "查看项目",
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "WKL9g",
+          "name": "Section/About",
+          "fill": "$accent",
+          "content": "关于我",
+          "fontFamily": "$font-display",
+          "fontSize": 24,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "i15ivb",
+          "name": "Card/About",
+          "width": "fill_container",
+          "fill": "$card-bg",
+          "cornerRadius": "$radius-md",
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "layout": "vertical",
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "cn8MI",
+              "name": "Body",
+              "fill": "$text-muted",
+              "content": "个人优势与技能摘要占位",
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "YOIJw",
+          "name": "Section/Projects",
+          "fill": "$accent",
+          "content": "项目经历",
+          "fontFamily": "$font-display",
+          "fontSize": 24,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "AjbOS",
+          "name": "Section/Projects/List",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "JIAhP",
+              "name": "Card/Project",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yCeXP",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "物联网管控运维平台",
+                  "fontFamily": "$font-display",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "Gbkps",
+                  "name": "Meta",
+                  "fill": "$text-muted",
+                  "content": "2020.04 - 2021.04",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "a6gYL",
+                  "name": "Description",
+                  "fill": "$text-muted",
+                  "content": "BS 架构项目组合案例，智能建筑物联网平台。",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "aqYRv",
+          "name": "Section/Contact",
+          "fill": "$accent",
+          "content": "联系方式",
+          "fontFamily": "$font-display",
+          "fontSize": 24,
+          "fontWeight": "700"
+        },
+        {
+          "type": "frame",
+          "id": "mLz4C",
+          "name": "Section/Contact/List",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "frame",
+              "id": "KWVkN",
+              "name": "Card/Contact/Email",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 6,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "O6CP2",
+                  "name": "Label",
+                  "fill": "$text-muted",
+                  "content": "邮箱",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "IoD3d",
+                  "name": "Value",
+                  "fill": "$text-primary",
+                  "content": "470905939@qq.com",
+                  "fontFamily": "$font-body",
+                  "fontSize": 15,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "oied7",
+              "name": "Card/Contact/Phone",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 6,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "tuapm",
+                  "name": "Label",
+                  "fill": "$text-muted",
+                  "content": "电话",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "A0XBlG",
+                  "name": "Value",
+                  "fill": "$text-primary",
+                  "content": "17722561124",
+                  "fontFamily": "$font-body",
+                  "fontSize": 15,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
         }
       ]
     }
