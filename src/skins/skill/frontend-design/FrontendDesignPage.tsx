@@ -32,7 +32,7 @@ export function FrontendDesignPage() {
       <FdBackground />
       <SkinHeader className="bg-[rgba(12,10,9,0.85)]" />
       <main>
-        <ContentBlocks heroLayout="editorial" heroPanelClass="skin-panel p-6" />
+        <ContentBlocks heroLayout="editorial" />
       </main>
       <SkinFooter />
       <ThemeSwitcher />

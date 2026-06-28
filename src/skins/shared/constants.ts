@@ -6,3 +6,6 @@ export const BASE = import.meta.env.BASE_URL;
 
 /** 个人头像（public/images/） / Profile photo served from public/images/ */
 export const AVATAR_SRC = `${BASE}images/itboy-left.jpeg`;
+
+/** 头像构图焦点（主体偏左） / Object-position for left-weighted portrait crop */
+export const AVATAR_OBJECT_POSITION = "20% center";

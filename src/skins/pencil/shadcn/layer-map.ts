@@ -2,6 +2,7 @@
 export const SHADCN_LAYER_MAP = {
   "Hero/Headline": "blocks.hero.headline",
   "Hero/Tagline": "blocks.hero.tagline",
+  "Hero/Avatar": "constants.AVATAR_SRC",
   "Hero/CTA": "blocks.hero.ctas[0]",
   "Section/About": "blocks.about.title",
   "Card/About": "blocks.about.summaryBullets[]",

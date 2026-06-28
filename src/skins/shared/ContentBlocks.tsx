@@ -8,7 +8,8 @@ import {
 } from "@/lib/siteContentUtils";
 import { PlaceholderBadge } from "@/components/ui/PlaceholderBadge";
 import { cn } from "@/lib/utils";
-import { AVATAR_SRC, BASE } from "@/skins/shared/constants";
+import { HeroAvatar } from "@/skins/shared/HeroAvatar";
+import { BASE } from "@/skins/shared/constants";
 import type {
   AboutBlock,
   ContactBlock,
@@ -56,14 +57,12 @@ function ContentSection({ id, title, subtitle, children }: SectionProps) {
 interface HeroRendererProps {
   block: HeroBlock;
   layout?: "center" | "split" | "editorial";
-  panelClass?: string;
 }
 
 /** Hero 块渲染 / Hero block renderer */
 function HeroBlockRenderer({
   block,
   layout = "split",
-  panelClass = "skin-panel",
 }: HeroRendererProps) {
   const primaryCta = getPrimaryCta(block);
   const secondaryCta = block.ctas.find((cta) => cta.variant === "secondary");
@@ -87,6 +86,11 @@ function HeroBlockRenderer({
           transition={{ duration: 0.8 }}
           className={layout === "center" ? "mx-auto max-w-3xl" : ""}
         >
+          {layout === "center" && (
+            <div className="mb-6 flex justify-center">
+              <HeroAvatar variant="circle" alt={`${block.headline} 头像`} />
+            </div>
+          )}
           {block.roleLine && (
             <p className="mb-4 text-xs uppercase tracking-[0.25em] text-[var(--theme-text-muted)]">
               {block.roleLine}
@@ -137,16 +141,12 @@ function HeroBlockRenderer({
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className={cn("relative p-6", panelClass)}
+            className="flex justify-center lg:justify-end"
           >
-            <div className="relative mx-auto h-48 w-48 overflow-hidden sm:h-56 sm:w-56">
-              <img
-                src={AVATAR_SRC}
-                alt={`${block.headline} 头像`}
-                loading="lazy"
-                className="h-full w-full rounded-[var(--theme-radius)] object-cover"
-              />
-            </div>
+            <HeroAvatar
+              variant={layout === "editorial" ? "panel" : "panelSolid"}
+              alt={`${block.headline} 头像`}
+            />
           </motion.div>
         )}
       </div>
@@ -329,14 +329,12 @@ function CustomBlockRenderer({ block }: { block: CustomBlock }) {
 interface ContentBlockRendererProps {
   block: SiteBlock;
   heroLayout?: "center" | "split" | "editorial";
-  heroPanelClass?: string;
 }
 
 /** 单块渲染 / Render one content block by type */
 export function ContentBlockRenderer({
   block,
   heroLayout,
-  heroPanelClass,
 }: ContentBlockRendererProps) {
   switch (block.type) {
     case "hero":
@@ -344,7 +342,6 @@ export function ContentBlockRenderer({
         <HeroBlockRenderer
           block={block}
           layout={heroLayout}
-          panelClass={heroPanelClass}
         />
       );
     case "about":
@@ -364,11 +361,10 @@ export function ContentBlockRenderer({
 
 export interface ContentBlocksProps {
   heroLayout?: "center" | "split" | "editorial";
-  heroPanelClass?: string;
 }
 
 /** 按 blocks 顺序渲染站点内容 / Render all site content blocks in order */
-export function ContentBlocks({ heroLayout, heroPanelClass }: ContentBlocksProps) {
+export function ContentBlocks({ heroLayout }: ContentBlocksProps) {
   const content = useSiteContent();
 
   return (
@@ -378,7 +374,6 @@ export function ContentBlocks({ heroLayout, heroPanelClass }: ContentBlocksProps
           key={block.id}
           block={block}
           heroLayout={heroLayout}
-          heroPanelClass={heroPanelClass}
         />
       ))}
     </>

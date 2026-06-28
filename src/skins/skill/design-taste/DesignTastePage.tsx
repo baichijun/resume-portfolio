@@ -22,7 +22,7 @@ export function DesignTastePage() {
         className="border-b-2 border-[var(--theme-border)] bg-[var(--theme-bg)]"
       />
       <main>
-        <ContentBlocks heroLayout="split" heroPanelClass="skin-panel-solid p-6" />
+        <ContentBlocks heroLayout="split" />
       </main>
       <SkinFooter />
       <ThemeSwitcher />
