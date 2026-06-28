@@ -81,6 +81,301 @@
               "fontWeight": "normal"
             }
           ]
+        },
+        {
+          "type": "frame",
+          "id": "XF6de",
+          "name": "Hero/CTA",
+          "fill": "$accent",
+          "cornerRadius": "$radius-md",
+          "padding": [
+            12,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "ko8se",
+              "name": "Label",
+              "fill": "$text-primary",
+              "content": "查看项目",
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "uAjNP",
+          "name": "Section/Projects",
+          "fill": "$accent",
+          "content": "项目经历",
+          "fontFamily": "$font-display",
+          "fontSize": 28,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "AGGh8",
+          "name": "Section/Projects/List",
+          "width": 1344,
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "meU1o",
+              "name": "Card/Project",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fXQAZ",
+                  "name": "Shell/AccentBar",
+                  "width": 48,
+                  "height": 3,
+                  "fill": "$accent",
+                  "cornerRadius": 2
+                },
+                {
+                  "type": "text",
+                  "id": "AlVrB",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "物联网管控运维平台",
+                  "fontFamily": "$font-display",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "E06su",
+                  "name": "Meta",
+                  "fill": "$text-muted",
+                  "content": "2020.04 - 2021.04 · 深圳市安冠科技",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "v185w",
+                  "name": "Description",
+                  "fill": "$text-muted",
+                  "content": "BS 架构项目组合案例，智能建筑物联网云操作系统与综合监控平台。",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "XpJiq",
+                  "name": "Tags",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "P2n48w",
+                      "name": "Tag",
+                      "fill": "$accent-secondary",
+                      "content": "PMO",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "k8UFFq",
+                      "name": "Tag",
+                      "fill": "$accent-secondary",
+                      "content": "物联网",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "it0A3",
+              "name": "Card/Project",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "KxFnG",
+                  "name": "Shell/AccentBar",
+                  "width": 48,
+                  "height": 3,
+                  "fill": "$accent",
+                  "cornerRadius": 2
+                },
+                {
+                  "type": "text",
+                  "id": "LqDXC",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "龙华有轨电车-智慧运维",
+                  "fontFamily": "$font-display",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "A7wHa",
+                  "name": "Meta",
+                  "fill": "$text-muted",
+                  "content": "2018.05 - 2020.07 · 深圳市安冠科技",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Yw2Bm",
+                  "name": "Description",
+                  "fill": "$text-muted",
+                  "content": "交通领域智慧运维平台，全生命周期项目管理与交付。",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "p17eC",
+                  "name": "Tags",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n9P4EW",
+                      "name": "Tag",
+                      "fill": "$accent-secondary",
+                      "content": "交通",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TSJRk",
+                      "name": "Tag",
+                      "fill": "$accent-secondary",
+                      "content": "运维",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "h5mZ9",
+          "name": "Section/Contact",
+          "fill": "$accent",
+          "content": "联系方式",
+          "fontFamily": "$font-display",
+          "fontSize": 28,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "Z4nRiM",
+          "name": "Section/Contact/List",
+          "width": 1344,
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "u0i8wb",
+              "name": "Card/Contact/Email",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OWihz",
+                  "name": "Label",
+                  "fill": "$text-muted",
+                  "content": "邮箱",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "c1mOo",
+                  "name": "Value",
+                  "fill": "$text-primary",
+                  "content": "470905939@qq.com",
+                  "fontFamily": "$font-body",
+                  "fontSize": 16,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "I2yTQb",
+              "name": "Card/Contact/Phone",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "t2YPn",
+                  "name": "Label",
+                  "fill": "$text-muted",
+                  "content": "电话",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "l3i2F",
+                  "name": "Value",
+                  "fill": "$text-primary",
+                  "content": "17722561124",
+                  "fontFamily": "$font-body",
+                  "fontSize": 16,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -111,6 +406,246 @@
           "fontFamily": "$font-display",
           "fontSize": 36,
           "fontWeight": "700"
+        },
+        {
+          "type": "text",
+          "id": "aWnfM",
+          "name": "Hero/Tagline",
+          "fill": "$text-muted",
+          "content": "Lunaris · Project Portfolio",
+          "fontFamily": "$font-body",
+          "fontSize": 16,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "PxNwR",
+          "name": "Shell/AccentBar",
+          "width": 80,
+          "height": 3,
+          "fill": "$accent",
+          "cornerRadius": 2
+        },
+        {
+          "type": "frame",
+          "id": "nT72X",
+          "name": "Hero/CTA",
+          "fill": "$accent",
+          "cornerRadius": "$radius-md",
+          "padding": [
+            12,
+            24
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "FQNSl",
+              "name": "Label",
+              "fill": "$text-primary",
+              "content": "查看项目",
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "XCsGu",
+          "name": "Section/About",
+          "fill": "$accent",
+          "content": "关于我",
+          "fontFamily": "$font-display",
+          "fontSize": 22,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "uwac8",
+          "name": "Card/About",
+          "width": "fill_container",
+          "fill": "$card-bg",
+          "cornerRadius": "$radius-md",
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "layout": "vertical",
+          "padding": 20,
+          "children": [
+            {
+              "type": "text",
+              "id": "s8yDl",
+              "name": "Body",
+              "fill": "$text-muted",
+              "content": "个人优势与技能摘要占位",
+              "fontFamily": "$font-body",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "zlU72",
+          "name": "Section/Projects",
+          "fill": "$accent",
+          "content": "项目经历",
+          "fontFamily": "$font-display",
+          "fontSize": 22,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "p811E",
+          "name": "Section/Projects/List",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "AvTDz",
+              "name": "Card/Project",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "LI0oN",
+                  "name": "Shell/AccentBar",
+                  "width": 40,
+                  "height": 3,
+                  "fill": "$accent",
+                  "cornerRadius": 2
+                },
+                {
+                  "type": "text",
+                  "id": "PeL2Z",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "物联网管控运维平台",
+                  "fontFamily": "$font-display",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "ZNRSl",
+                  "name": "Meta",
+                  "fill": "$text-muted",
+                  "content": "2020.04 - 2021.04",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "DpMfB",
+                  "name": "Description",
+                  "fill": "$text-muted",
+                  "content": "BS 架构项目组合案例，智能建筑物联网平台。",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "doanw",
+          "name": "Section/Contact",
+          "fill": "$accent",
+          "content": "联系方式",
+          "fontFamily": "$font-display",
+          "fontSize": 22,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "C2u2k",
+          "name": "Section/Contact/List",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "frame",
+              "id": "gfy3k",
+              "name": "Card/Contact/Email",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 6,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "zq3DG",
+                  "name": "Label",
+                  "fill": "$text-muted",
+                  "content": "邮箱",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "QEy2u",
+                  "name": "Value",
+                  "fill": "$text-primary",
+                  "content": "470905939@qq.com",
+                  "fontFamily": "$font-body",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "csaLA",
+              "name": "Card/Contact/Phone",
+              "width": "fill_container",
+              "fill": "$card-bg",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 6,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "t8Qrmi",
+                  "name": "Label",
+                  "fill": "$text-muted",
+                  "content": "电话",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "pybDU",
+                  "name": "Value",
+                  "fill": "$text-primary",
+                  "content": "17722561124",
+                  "fontFamily": "$font-body",
+                  "fontSize": 15,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
         }
       ]
     }
