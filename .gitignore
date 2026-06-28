@@ -32,3 +32,7 @@ dist-ssr
 # Wrangler
 .wrangler
 .dev.vars
+
+# Agent plans — local git only; pre-push blocks *.plan.md / Agent 计划仅本地
+.cursor/plans/*.plan.md
+!.cursor/plans/README.md
