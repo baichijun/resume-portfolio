@@ -101,7 +101,7 @@ flowchart LR
 | 皮肤类型 | 布局来源 |
 |----------|----------|
 | Skill x3 | 各 skill 目录内自建 React 布局 |
-| Pencil Lunaris / Halo | 暂用 `ResumeSections` + 主题 CSS（待 export 试点推广） |
+| Pencil Lunaris / Halo | Lunaris：`export_html` → `components/Lunaris*.tsx`；Halo 仍用 `ResumeSections` |
 | Pencil Shadcn | **`export_html` → `components/Shadcn*.tsx`**（2026-06-28 试点完成） |
 
 Shadcn 重导出流程见 [`src/skins/pencil/shadcn/export/README.md`](../src/skins/pencil/shadcn/export/README.md) 与 [`layer-map.ts`](../src/skins/pencil/shadcn/layer-map.ts)。
@@ -375,5 +375,12 @@ node scripts/pen-export-theme.mjs shadcn   # 打印 MCP export_html 步骤 + boo
 - `.pen` 已含 Projects 卡片 + Contact
 - `desktop.html` 已导出
 - [`ShadcnPencilPage.tsx`](../src/skins/pencil/shadcn/ShadcnPencilPage.tsx) 已脱离 `ResumeSections`
-- Lunaris / Halo 仍用 CSS 对齐占位，待 Shadcn 模式验证后复制
+
+**Lunaris 试点状态（2026-06-28）**：
+
+- `.pen` 已含 Projects 卡片 + Contact + `Shell/AccentBar`
+- `desktop.html` 已导出（Desktop id: `HwWCW`）
+- [`LunarisPencilPage.tsx`](../src/skins/pencil/lunaris/LunarisPencilPage.tsx) 已脱离 `ResumeSections`
+
+- Halo 仍用 CSS 对齐占位，待 Shadcn/Lunaris 模式验证后复制
 
