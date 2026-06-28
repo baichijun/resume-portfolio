@@ -94,11 +94,19 @@ flowchart LR
 
 ### 2.3 与网页的同步范围（当前）
 
-当前实现为 **设计 Token 同步**：
+**内容**：所有六皮肤共用 [`简历内容.md`](../简历内容.md) → `useResumeData()`。
 
-- Pencil 变量 → `design/tokens/*.json` → `*.generated.css` → `[data-theme="..."]`
-- React 组件结构不变；改 Pencil 里的布局/组件**不会**自动更新网页代码
-- 若需布局级同步，需另立方案（见 PRD / 后续迭代）
+**呈现**：
+
+| 皮肤类型 | 布局来源 |
+|----------|----------|
+| Skill x3 | 各 skill 目录内自建 React 布局 |
+| Pencil Lunaris / Halo | 暂用 `ResumeSections` + 主题 CSS（待 export 试点推广） |
+| Pencil Shadcn | **`export_html` → `components/Shadcn*.tsx`**（2026-06-28 试点完成） |
+
+Shadcn 重导出流程见 [`src/skins/pencil/shadcn/export/README.md`](../src/skins/pencil/shadcn/export/README.md) 与 [`layer-map.ts`](../src/skins/pencil/shadcn/layer-map.ts)。
+
+**注意**：`export_html` 的 `outputPath` 需使用**项目绝对路径**，否则可能写到 `C:\Users\47090\src\...` 错误位置。
 
 ---
 
@@ -353,12 +361,19 @@ design/UI-Pencil-Halo.pen
 ### 9.4 export_html 工作流（所见即所得）
 
 ```bash
-npm run pen:export:shadcn   # 打印 MCP export_html 步骤 + bootstrap
+node scripts/pen-export-theme.mjs shadcn   # 打印 MCP export_html 步骤 + bootstrap
 ```
 
-1. `export_html` → `src/skins/pencil/{id}/export/desktop.html`
-2. Agent 转为 React → 替换 `{id}PencilPage.tsx`
-3. Layer 名约定：`Hero/Headline` → `useResumeData().name`
+1. 补全 `.pen`（Hero / About / Projects / Contact）→ **Ctrl+S**
+2. `batch_get` → Desktop 节点 id（Shadcn：`yc9zJ`）
+3. `export_html` → `src/skins/pencil/shadcn/export/desktop.html`（**绝对路径**）
+4. 更新 `components/Shadcn*.tsx` 的 **LAYOUT**；**BINDINGS** 按 `layer-map.ts` 保留
+5. Layer 名约定：`Hero/Headline` → `useResumeData().name`
 
-当前网页已提供 CSS 对齐的 `*PencilPage.tsx` 占位，待 export 后替换。
+**Shadcn 试点状态（2026-06-28）**：
+
+- `.pen` 已含 Projects 卡片 + Contact
+- `desktop.html` 已导出
+- [`ShadcnPencilPage.tsx`](../src/skins/pencil/shadcn/ShadcnPencilPage.tsx) 已脱离 `ResumeSections`
+- Lunaris / Halo 仍用 CSS 对齐占位，待 Shadcn 模式验证后复制
 

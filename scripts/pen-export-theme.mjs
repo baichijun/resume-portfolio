@@ -53,7 +53,7 @@ console.log(`# 2. Apply Design Goodies → Design Systems → ${key === "shadcn"
 console.log(`# 3. If empty, run batch_design from ${cfg.bootstrap}`);
 console.log(`# 4. Ctrl+S save`);
 console.log(`# 5. batch_get → find Desktop/Mobile node ids`);
-console.log(`# 6. export_html({ filePath, nodeIds: [desktopId], outputPath: "${cfg.outDir}/desktop.html", format: "html-tailwind", includeLayerNames: true })`);
+console.log(`# 6. export_html({ filePath, nodeIds: [desktopId], outputPath: "${ROOT.replace(/\\\\/g, "/")}/${cfg.outDir}/desktop.html", format: "html-tailwind", includeLayerNames: true })`);
 console.log(`# 7. Agent converts HTML → React in src/skins/pencil/${key}/`);
 console.log("");
 console.log("--- bootstrap (batch_design input) ---");
