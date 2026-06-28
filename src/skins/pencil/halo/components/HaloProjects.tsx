@@ -1,16 +1,13 @@
-import { siteCopy } from "@/config/siteCopy";
-import type { ResumeProject } from "@/types/resume";
-import { useResumeData } from "@/hooks/useResumeData";
+import { getProjectDisplayTags, getProjectsBlock } from "@/lib/siteContentUtils";
+import { useSiteContent } from "@/hooks/useSiteContent";
+import type { ProjectItem } from "@/types/siteContent";
 
 // LAYOUT: from export/desktop.html (2026-06-28)
 // BINDINGS: see layer-map.ts — Section/Projects, Card/Project
 
 /** 单项目卡片 / Single project card from Card/Project template */
-function HaloProjectCard({ project }: { project: ResumeProject }) {
-  const tags =
-    project.techStack.length > 0
-      ? project.techStack
-      : project.highlights.slice(0, 2);
+function HaloProjectCard({ project }: { project: ProjectItem }) {
+  const tags = getProjectDisplayTags(project);
 
   return (
     <article
@@ -64,8 +61,10 @@ function HaloProjectCard({ project }: { project: ResumeProject }) {
 
 /** Halo 项目经历 / Projects section aligned to Pencil export */
 export function HaloProjects() {
-  const data = useResumeData();
-  const { projects } = siteCopy.sections;
+  const content = useSiteContent();
+  const projects = getProjectsBlock(content);
+
+  if (!projects) return null;
 
   return (
     <section
@@ -85,7 +84,7 @@ export function HaloProjects() {
           data-pencil-name="Section/Projects/List"
           className="box-border grid w-full shrink-0 grid-cols-1 gap-6 md:grid-cols-2"
         >
-          {data.projects.map((project) => (
+          {projects.items.map((project) => (
             <HaloProjectCard key={project.title} project={project} />
           ))}
         </div>

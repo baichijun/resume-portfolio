@@ -1,10 +1,23 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { siteCopy } from "@/config/siteCopy";
-import { useResumeData } from "@/hooks/useResumeData";
+import { useSiteContent } from "@/hooks/useSiteContent";
+import {
+  getPrimaryCta,
+  getProjectDisplayTags,
+} from "@/lib/siteContentUtils";
 import { PlaceholderBadge } from "@/components/ui/PlaceholderBadge";
 import { cn } from "@/lib/utils";
-import { BASE } from "@/skins/shared/constants";
+import { AVATAR_SRC, BASE } from "@/skins/shared/constants";
+import type {
+  AboutBlock,
+  ContactBlock,
+  CustomBlock,
+  HeroBlock,
+  ProjectItem,
+  ProjectsBlock,
+  SiteBlock,
+} from "@/types/siteContent";
 
 interface SectionProps {
   id: string;
@@ -13,8 +26,8 @@ interface SectionProps {
   children: React.ReactNode;
 }
 
-/** 通用区块 / Generic resume section wrapper */
-export function ResumeSection({ id, title, subtitle, children }: SectionProps) {
+/** 通用区块包装 / Generic section wrapper */
+function ContentSection({ id, title, subtitle, children }: SectionProps) {
   return (
     <section id={id} className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
@@ -40,20 +53,24 @@ export function ResumeSection({ id, title, subtitle, children }: SectionProps) {
   );
 }
 
-interface HeroProps {
+interface HeroRendererProps {
+  block: HeroBlock;
   layout?: "center" | "split" | "editorial";
   panelClass?: string;
 }
 
-/** 英雄区 / Hero with resume data */
-export function ResumeHero({ layout = "split", panelClass = "skin-panel" }: HeroProps) {
-  const data = useResumeData();
-  const intro = data.summary.slice(0, 3).join("；");
-  const { hero } = siteCopy;
+/** Hero 块渲染 / Hero block renderer */
+function HeroBlockRenderer({
+  block,
+  layout = "split",
+  panelClass = "skin-panel",
+}: HeroRendererProps) {
+  const primaryCta = getPrimaryCta(block);
+  const secondaryCta = block.ctas.find((cta) => cta.variant === "secondary");
 
   return (
     <section
-      id={siteCopy.nav.hero.href.slice(1)}
+      id={block.id}
       className="relative flex min-h-screen scroll-mt-24 items-center px-4 pt-24 sm:px-6 lg:px-8"
     >
       <div
@@ -70,9 +87,11 @@ export function ResumeHero({ layout = "split", panelClass = "skin-panel" }: Hero
           transition={{ duration: 0.8 }}
           className={layout === "center" ? "mx-auto max-w-3xl" : ""}
         >
-          <p className="mb-4 text-xs uppercase tracking-[0.25em] text-[var(--theme-text-muted)]">
-            {hero.roleLine}
-          </p>
+          {block.roleLine && (
+            <p className="mb-4 text-xs uppercase tracking-[0.25em] text-[var(--theme-text-muted)]">
+              {block.roleLine}
+            </p>
+          )}
           <h1
             className={cn(
               "text-5xl font-extrabold leading-[1.05] sm:text-6xl lg:text-7xl",
@@ -80,28 +99,36 @@ export function ResumeHero({ layout = "split", panelClass = "skin-panel" }: Hero
             )}
             style={{ fontFamily: "var(--theme-font-display)" }}
           >
-            <span className="gradient-text">{data.name}</span>
+            <span className="gradient-text">{block.headline}</span>
           </h1>
-          <p className="mt-4 text-lg text-[var(--theme-text-muted)]">{data.tagline}</p>
-          <p className="mt-6 max-w-2xl leading-relaxed text-[var(--theme-text)]">{intro}</p>
+          <p className="mt-4 text-lg text-[var(--theme-text-muted)]">{block.tagline}</p>
+          {block.intro && (
+            <p className="mt-6 max-w-2xl leading-relaxed text-[var(--theme-text)]">
+              {block.intro}
+            </p>
+          )}
           <div
             className={cn(
               "mt-8 flex flex-wrap gap-4",
               layout === "center" && "justify-center",
             )}
           >
-            <a
-              href={hero.ctaPrimaryHref}
-              className="inline-flex items-center rounded-[var(--theme-radius)] bg-[var(--theme-accent)] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
-            >
-              {hero.ctaPrimary}
-            </a>
-            <a
-              href={hero.ctaSecondaryHref}
-              className="inline-flex items-center rounded-[var(--theme-radius)] border border-[var(--theme-border)] px-6 py-3 text-sm font-medium transition hover:bg-[var(--theme-card-hover)]"
-            >
-              {hero.ctaSecondary}
-            </a>
+            {primaryCta && (
+              <a
+                href={primaryCta.href}
+                className="inline-flex items-center rounded-[var(--theme-radius)] bg-[var(--theme-accent)] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
+              >
+                {primaryCta.label}
+              </a>
+            )}
+            {secondaryCta && (
+              <a
+                href={secondaryCta.href}
+                className="inline-flex items-center rounded-[var(--theme-radius)] border border-[var(--theme-border)] px-6 py-3 text-sm font-medium transition hover:bg-[var(--theme-card-hover)]"
+              >
+                {secondaryCta.label}
+              </a>
+            )}
           </div>
         </motion.div>
 
@@ -114,14 +141,11 @@ export function ResumeHero({ layout = "split", panelClass = "skin-panel" }: Hero
           >
             <div className="relative mx-auto h-48 w-48 overflow-hidden sm:h-56 sm:w-56">
               <img
-                src={`${BASE}images/placeholders/avatar.svg`}
-                alt={`${data.name} 头像占位`}
+                src={AVATAR_SRC}
+                alt={`${block.headline} 头像`}
                 loading="lazy"
                 className="h-full w-full rounded-[var(--theme-radius)] object-cover"
               />
-            </div>
-            <div className="mt-4 text-center">
-              <PlaceholderBadge label="头像" />
             </div>
           </motion.div>
         )}
@@ -130,18 +154,15 @@ export function ResumeHero({ layout = "split", panelClass = "skin-panel" }: Hero
   );
 }
 
-/** 关于我 / About section */
-export function ResumeAbout() {
-  const data = useResumeData();
-  const { about } = siteCopy.sections;
-
+/** About 块渲染 / About block renderer */
+function AboutBlockRenderer({ block }: { block: AboutBlock }) {
   return (
-    <ResumeSection id={about.id} title={about.title} subtitle={about.subtitle}>
+    <ContentSection id={block.id} title={block.title} subtitle={block.subtitle}>
       <div className="grid gap-8 lg:grid-cols-2">
         <div className="skin-panel p-6">
-          <h3 className="mb-4 text-xl font-semibold">{about.summaryHeading}</h3>
+          <h3 className="mb-4 text-xl font-semibold">{block.summaryHeading}</h3>
           <ul className="space-y-3 text-[var(--theme-text-muted)]">
-            {data.summary.map((item) => (
+            {block.summaryBullets.map((item) => (
               <li key={item} className="flex gap-2">
                 <span className="text-[var(--theme-accent)]">▸</span>
                 <span>{item}</span>
@@ -150,10 +171,13 @@ export function ResumeAbout() {
           </ul>
         </div>
         <div className="skin-panel p-6">
-          <h3 className="mb-4 text-xl font-semibold">{about.educationHeading}</h3>
+          <h3 className="mb-4 text-xl font-semibold">{block.educationHeading}</h3>
           <ul className="space-y-4">
-            {data.education.map((edu) => (
-              <li key={`${edu.school}-${edu.period}`} className="border-l-2 border-[var(--theme-accent)] pl-4">
+            {block.education.map((edu) => (
+              <li
+                key={`${edu.school}-${edu.period}`}
+                className="border-l-2 border-[var(--theme-accent)] pl-4"
+              >
                 <p className="font-medium">{edu.school}</p>
                 <p className="text-sm text-[var(--theme-text-muted)]">{edu.degree}</p>
                 <p className="text-xs text-[var(--theme-text-muted)]">{edu.period}</p>
@@ -163,9 +187,9 @@ export function ResumeAbout() {
         </div>
       </div>
       <div className="skin-panel mt-8 p-6">
-        <h3 className="mb-4 text-xl font-semibold">{about.skillsHeading}</h3>
+        <h3 className="mb-4 text-xl font-semibold">{block.skillsHeading}</h3>
         <div className="flex flex-wrap gap-2">
-          {data.skills.map((skill) => (
+          {block.skills.map((skill) => (
             <span
               key={skill}
               className="rounded-full border border-[var(--theme-border)] bg-[var(--theme-bg-secondary)] px-3 py-1 text-sm"
@@ -175,39 +199,18 @@ export function ResumeAbout() {
           ))}
         </div>
       </div>
-    </ResumeSection>
+    </ContentSection>
   );
 }
 
-/** 项目经历 / Projects section */
-export function ResumeProjects() {
-  const data = useResumeData();
-  const { projects } = siteCopy.sections;
-
-  return (
-    <ResumeSection id={projects.id} title={projects.title} subtitle={projects.subtitle}>
-      <div className="grid gap-8 md:grid-cols-2">
-        {data.projects.map((project, index) => (
-          <ProjectCard key={project.title} index={index} project={project} />
-        ))}
-      </div>
-    </ResumeSection>
-  );
-}
-
-/** 可展开项目卡片，供 Skill 皮肤复用 / Expandable project card for skill skins */
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: ReturnType<typeof useResumeData>["projects"][number];
-  index: number;
-}) {
+/** 可展开项目卡 / Expandable project card for skill skins */
+function SkillProjectCard({ project, index }: { project: ProjectItem; index: number }) {
   const [expanded, setExpanded] = useState(false);
   const shortDesc =
     project.description.length > 160 && !expanded
       ? `${project.description.slice(0, 160)}…`
       : project.description;
+  const tags = getProjectDisplayTags(project);
 
   return (
     <motion.article
@@ -245,8 +248,8 @@ function ProjectCard({
           </button>
         )}
         <div className="mt-4 flex flex-wrap gap-2">
-          {project.techStack.length > 0 ? (
-            project.techStack.map((tech) => (
+          {tags.length > 0 ? (
+            tags.map((tech) => (
               <span
                 key={tech}
                 className="rounded-full border border-[var(--theme-border)] px-2 py-0.5 text-xs"
@@ -263,31 +266,121 @@ function ProjectCard({
   );
 }
 
-/** 联系方式 / Contact section */
-export function ResumeContact() {
-  const data = useResumeData();
-  const { contact } = siteCopy.sections;
+/** Projects 块渲染 / Projects block renderer */
+function ProjectsBlockRenderer({ block }: { block: ProjectsBlock }) {
+  return (
+    <ContentSection id={block.id} title={block.title} subtitle={block.subtitle}>
+      <div className="grid gap-8 md:grid-cols-2">
+        {block.items.map((project, index) => (
+          <SkillProjectCard key={project.title} index={index} project={project} />
+        ))}
+      </div>
+    </ContentSection>
+  );
+}
+
+/** Contact 块渲染 / Contact block renderer */
+function ContactBlockRenderer({ block }: { block: ContactBlock }) {
   const missing = siteCopy.missing.fallback;
 
   return (
-    <ResumeSection id={contact.id} title={contact.title} subtitle={contact.subtitle}>
+    <ContentSection id={block.id} title={block.title} subtitle={block.subtitle}>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <a
-          href={`mailto:${data.email}`}
+          href={block.email ? `mailto:${block.email}` : undefined}
           className="skin-panel block p-6 transition hover:bg-[var(--theme-card-hover)]"
         >
-          <p className="text-sm text-[var(--theme-text-muted)]">{contact.emailLabel}</p>
-          <p className="mt-2 font-semibold">{data.email || missing}</p>
+          <p className="text-sm text-[var(--theme-text-muted)]">{block.emailLabel}</p>
+          <p className="mt-2 font-semibold">{block.email || missing}</p>
         </a>
         <div className="skin-panel p-6">
-          <p className="text-sm text-[var(--theme-text-muted)]">{contact.phoneLabel}</p>
-          <p className="mt-2 font-semibold">{data.phone || missing}</p>
+          <p className="text-sm text-[var(--theme-text-muted)]">{block.phoneLabel}</p>
+          <p className="mt-2 font-semibold">{block.phone || missing}</p>
         </div>
         <div className="skin-panel p-6">
-          <p className="text-sm text-[var(--theme-text-muted)]">{contact.githubLabel}</p>
-          <PlaceholderBadge label="社交媒体链接" />
+          <p className="text-sm text-[var(--theme-text-muted)]">{block.githubLabel}</p>
+          {block.githubUrl ? (
+            <a
+              href={block.githubUrl}
+              className="mt-2 block font-semibold text-[var(--theme-accent)] hover:underline"
+            >
+              {block.githubUrl}
+            </a>
+          ) : (
+            <PlaceholderBadge label="社交媒体链接" />
+          )}
         </div>
       </div>
-    </ResumeSection>
+    </ContentSection>
+  );
+}
+
+/** Custom 块渲染 / Custom freeform block renderer */
+function CustomBlockRenderer({ block }: { block: CustomBlock }) {
+  return (
+    <ContentSection id={block.id} title={block.title}>
+      <div className="skin-panel p-6 text-[var(--theme-text-muted)] leading-relaxed">
+        {block.body}
+      </div>
+    </ContentSection>
+  );
+}
+
+interface ContentBlockRendererProps {
+  block: SiteBlock;
+  heroLayout?: "center" | "split" | "editorial";
+  heroPanelClass?: string;
+}
+
+/** 单块渲染 / Render one content block by type */
+export function ContentBlockRenderer({
+  block,
+  heroLayout,
+  heroPanelClass,
+}: ContentBlockRendererProps) {
+  switch (block.type) {
+    case "hero":
+      return (
+        <HeroBlockRenderer
+          block={block}
+          layout={heroLayout}
+          panelClass={heroPanelClass}
+        />
+      );
+    case "about":
+      return <AboutBlockRenderer block={block} />;
+    case "projects":
+      return <ProjectsBlockRenderer block={block} />;
+    case "contact":
+      return <ContactBlockRenderer block={block} />;
+    case "experience":
+      return null;
+    case "custom":
+      return <CustomBlockRenderer block={block} />;
+    default:
+      return null;
+  }
+}
+
+export interface ContentBlocksProps {
+  heroLayout?: "center" | "split" | "editorial";
+  heroPanelClass?: string;
+}
+
+/** 按 blocks 顺序渲染站点内容 / Render all site content blocks in order */
+export function ContentBlocks({ heroLayout, heroPanelClass }: ContentBlocksProps) {
+  const content = useSiteContent();
+
+  return (
+    <>
+      {content.blocks.map((block) => (
+        <ContentBlockRenderer
+          key={block.id}
+          block={block}
+          heroLayout={heroLayout}
+          heroPanelClass={heroPanelClass}
+        />
+      ))}
+    </>
   );
 }

@@ -1,14 +1,17 @@
 import { siteCopy } from "@/config/siteCopy";
-import { useResumeData } from "@/hooks/useResumeData";
+import { getContactBlock } from "@/lib/siteContentUtils";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 // LAYOUT: from export/desktop.html (2026-06-28)
 // BINDINGS: see layer-map.ts — Section/Contact, Card/Contact/*
 
 /** Halo 联系方式 / Contact section aligned to Pencil export */
 export function HaloContact() {
-  const data = useResumeData();
-  const { contact } = siteCopy.sections;
+  const content = useSiteContent();
+  const contact = getContactBlock(content);
   const missing = siteCopy.missing.fallback;
+
+  if (!contact) return null;
 
   return (
     <section
@@ -29,7 +32,7 @@ export function HaloContact() {
           className="box-border flex w-full shrink-0 flex-col gap-6 md:flex-row md:gap-6"
         >
           <a
-            href={data.email ? `mailto:${data.email}` : undefined}
+            href={contact.email ? `mailto:${contact.email}` : undefined}
             data-pencil-name="Card/Contact/Email"
             className="box-border flex min-w-0 flex-1 flex-col gap-2 rounded-[var(--theme-radius)] border border-[var(--theme-border)] bg-[var(--theme-card)] p-7 shadow-[var(--theme-shadow)] backdrop-blur-sm transition hover:bg-[var(--theme-card-hover)]"
           >
@@ -45,7 +48,7 @@ export function HaloContact() {
               className="text-base font-semibold text-[var(--theme-text)]"
               style={{ fontFamily: "var(--theme-font-body)" }}
             >
-              {data.email || missing}
+              {contact.email || missing}
             </p>
           </a>
           <div
@@ -64,7 +67,7 @@ export function HaloContact() {
               className="text-base font-semibold text-[var(--theme-text)]"
               style={{ fontFamily: "var(--theme-font-body)" }}
             >
-              {data.phone || missing}
+              {contact.phone || missing}
             </p>
           </div>
         </div>

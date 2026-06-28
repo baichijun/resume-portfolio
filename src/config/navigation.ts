@@ -1,9 +1,10 @@
-import { siteCopy } from "@/config/siteCopy";
+import { getNavItems } from "@/lib/siteContentUtils";
+import { getSiteContent } from "@/hooks/useSiteContent";
 
-/** 顶栏导航项，与 siteCopy.nav 同步 / Header nav items aligned with site shell */
-export const NAV_ITEMS = [
-  siteCopy.nav.hero,
-  siteCopy.nav.about,
-  siteCopy.nav.projects,
-  siteCopy.nav.contact,
-] as const;
+/** 顶栏导航项，由 content 块 nav 驱动 / Header nav from site content blocks */
+export function getNavigationItems() {
+  return getNavItems(getSiteContent());
+}
+
+/** 顶栏导航常量（构建时快照）/ Nav snapshot for modules that need a stable array */
+export const NAV_ITEMS = getNavigationItems();

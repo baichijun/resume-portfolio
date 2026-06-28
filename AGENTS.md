@@ -15,6 +15,14 @@ Cursor 规则（`.cursor/rules/`）：
 
 要点：函数式组件 + Hooks · Tailwind 样式 · 组件可复用 · 新代码遵循上述规则，存量逐步对齐
 
+## 数据流
+
+| 层 | 文件 | 用途 |
+|----|------|------|
+| 内容层（运行时真相源） | [`content/site.json`](content/site.json) | 页面文案与区块；`useSiteContent()` |
+| 简历归档 | [`简历内容.md`](简历内容.md) | 低频更新；`npm run content:import` 导入 |
+| 站点壳层 | [`src/config/siteCopy.ts`](src/config/siteCopy.ts) | 皮肤切换器、a11y、UI 控件文案 |
+
 ## 设计要求
 - 项目目标：**对比多种 UI 设计工具/Skill 的输出**，通过皮肤切换直观看到差异
 - Skill 皮肤：`frontend-design` / `ui-ux-pro-max` / `design-taste-frontend`
@@ -48,6 +56,7 @@ Cursor 规则（`.cursor/rules/`）：
 3. 若为空：Agent 执行 `scripts/pen-bootstrap-{shadcn|lunaris|halo}.js` → **Ctrl+S**
 4. `npm run pen:export:{shadcn|lunaris|halo}` 查看 export_html 步骤
 5. export 后 Agent 将 HTML 转为 React，替换 `src/skins/pencil/*/`
+6. `npm run pen:hydrate:{theme}` 将 `content/site.json` 文案同步到设计稿
 
 ### 截图对比
 
@@ -57,3 +66,16 @@ npm run capture:design-ref   # 输出 design/refs/*.png + layout.json
 ```
 
 详细踩坑与操作规范见 [`design/PENCIL-GUIDE.md`](design/PENCIL-GUIDE.md)。
+
+## 常用 npm 脚本
+
+| 命令 | 说明 |
+|------|------|
+| `npm run dev` / `build` | 开发 / 构建 |
+| `npm run content:import` | 简历 → `site.json`（merge） |
+| `npm run content:import:fresh` | 简历 → `site.json`（全量） |
+| `npm run pen:export:{theme}` | Pencil export 工作流说明 |
+| `npm run pen:hydrate:{theme}` | content → 设计稿文案对照 |
+| `npm run capture:design-ref` | 六皮肤截图回归 |
+
+内容层字段说明：[`content/README.md`](content/README.md)。人类可读总览：[`README.md`](README.md)。

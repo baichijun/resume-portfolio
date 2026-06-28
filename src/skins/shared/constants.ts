@@ -3,3 +3,6 @@ export { NAV_ITEMS } from "@/config/navigation";
 
 /** 部署 base path，兼容 GitHub Pages 等子路径 / Deploy base URL for GH Pages subpaths */
 export const BASE = import.meta.env.BASE_URL;
+
+/** 个人头像（public/images/） / Profile photo served from public/images/ */
+export const AVATAR_SRC = `${BASE}images/itboy-left.jpeg`;

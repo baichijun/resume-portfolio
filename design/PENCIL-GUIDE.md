@@ -3,8 +3,9 @@
 本文档汇总本项目在 Cursor + Pencil 扩展下使用 `.pen` 设计稿的真实经验，供本人或 Agent 操作时快速避坑。
 
 - 项目总览与六皮肤架构：[AGENTS.md](../AGENTS.md)
-- 简历数据：`简历内容.md` → `useResumeData()`（六皮肤共用）
-- 站点壳层 UI（皮肤切换器、导航等）：`src/components/`、`src/context/ThemeContext.tsx`
+- **站点内容真相源**：[`content/site.json`](../content/site.json) → `useSiteContent()`（六皮肤共用）
+- **简历归档**：[`简历内容.md`](../简历内容.md) → 手动 `npm run content:import` 导入内容层
+- 站点壳层 UI（皮肤切换器、a11y）：[`src/config/siteCopy.ts`](../src/config/siteCopy.ts)
 
 ---
 
@@ -105,14 +106,25 @@ flowchart LR
 
 ### 2.3 设计 ↔ 网页同步范围
 
-**简历内容**（姓名、项目、联系方式等）：所有六皮肤共用 [`简历内容.md`](../简历内容.md) → `parseResume()` → `useResumeData()`。
+**页面文案与区块**（姓名、项目、联系方式、区块标题等）：六皮肤共用 [`content/site.json`](../content/site.json) → `useSiteContent()`。
+
+**简历归档导入**（低频）：[`简历内容.md`](../简历内容.md) → `parseResume()` → `npm run content:import`（默认 `--merge`）写入 `content/site.json`。改 md **不会**自动改站，需手动触发 import。
 
 **布局与样式**：
 
 | 皮肤类型 | 布局来源 | 主题 CSS |
 |----------|----------|----------|
-| Skill ×3 | `src/skins/shared/ResumeSections.tsx` + 各 `*Page.tsx` | `src/index.css` `[data-theme="skill-..."]` |
-| Pencil ×3 | `export_html` → `components/*` + `useResumeData()` 绑定 | `src/index.css` `[data-theme="pencil-..."]` |
+| Skill ×3 | `src/skins/shared/ContentBlocks.tsx` + 各 `*Page.tsx` | `src/index.css` `[data-theme="skill-..."]` |
+| Pencil ×3 | `export_html` → `components/*` + `useSiteContent()` 绑定 | `src/index.css` `[data-theme="pencil-..."]` |
+
+**Pencil 文案同步**（content → .pen）：
+
+```bash
+npm run pen:hydrate:halo    # 或 lunaris / shadcn — 打印 layer 对照表
+# Agent: batch_get → batch_design Update → Ctrl+S
+```
+
+**Pencil 文案回写**（.pen → content）：Agent `batch_get` 提取 layer 文本 → 写入 `design/pen-extract-{theme}.json` → `npx tsx scripts/pen-extract-content.ts halo design/pen-extract-halo.json`
 
 Pencil 皮肤的 Layer 绑定约定见各目录：
 
@@ -169,16 +181,16 @@ npm run pen:export:shadcn   # 查看该主题的 Desktop 节点 id 与 outputPat
 ```
 
 4. Agent 将 HTML 转为 React，更新 `src/skins/pencil/{theme}/components/*.tsx` 的 **LAYOUT**
-5. **保留 BINDINGS**：动态字段仍绑定 `useResumeData()`，按 `layer-map.ts` 映射
+5. **保留 BINDINGS**：动态字段仍绑定 `useSiteContent()`，按 `layer-map.ts` 映射
 
 **Layer 名 → 数据绑定示例：**
 
 | Layer 名 | 数据源 |
 |----------|--------|
-| `Hero/Headline` | `useResumeData().name` |
-| `Hero/Tagline` | `useResumeData().tagline` |
-| `Section/Projects` | 区块标题（可硬编码或从组件 props） |
-| `Card/Project` | `data.projects.map(...)` |
+| `Hero/Headline` | `useSiteContent()` hero `headline` |
+| `Hero/Tagline` | `useSiteContent()` hero `tagline` |
+| `Section/Projects` | projects 块 `title` |
+| `Card/Project` | projects 块 `items.map(...)` |
 
 ### 3.4 各主题已知 Desktop 节点 id
 
@@ -275,12 +287,16 @@ npm run capture:design-ref   # 输出 design/refs/*.png + layout.json
 | `pen-bootstrap-lunaris.js` | Lunaris bootstrap |
 | `pen-bootstrap-halo.js` | Halo bootstrap |
 | `pen-export-theme.mjs` | 打印 export_html 工作流 + bootstrap 内容 |
+| `content-import-resume.ts` | 简历 md → `content/site.json` |
+| `pen-hydrate-content.ts` | content → Pencil layer 对照表 |
+| `pen-extract-content.ts` | Pencil 提取 JSON → `site.json` |
 | `capture-design-ref.mjs` | Playwright 六皮肤截图 + layout.json |
 
 ```bash
+npm run content:import
+npm run content:import:fresh
 npm run pen:export:shadcn
-npm run pen:export:lunaris
-npm run pen:export:halo
+npm run pen:hydrate:halo
 npm run capture:design-ref
 ```
 
@@ -332,10 +348,11 @@ npm run capture:design-ref
 4. **不要**单独用磁盘 hash 判断 MCP 是否成功（除非用户已保存）
 5. **不要**在 `pencil-welcome.pen` 中创建项目设计
 6. **不要**用 Read/Grep 读取 `.pen`
-7. **export_html**：`outputPath` 用绝对路径；保留 React 侧 `useResumeData()` 绑定
+7. **export_html**：`outputPath` 用绝对路径；保留 React 侧 `useSiteContent()` 绑定
 8. **destructive 操作前**：确认目标 theme 已 Ctrl+S 落盘
-9. **改简历文案**：编辑 `简历内容.md`，不是 `.pen` 里的占位文字
-10. **改站点壳层**（皮肤切换器标题、导航）：编辑 `src/components/layout/ThemeSwitcher.tsx` 等，不在 `简历内容.md`
+9. **改页面文案**：编辑 `content/site.json`；从简历同步用 `npm run content:import`
+10. **改简历归档**：编辑 `简历内容.md` 后手动 `content:import`；不会自动改站
+11. **改站点壳层**（皮肤切换器、a11y）：编辑 `src/config/siteCopy.ts`
 
 ---
 
@@ -345,8 +362,9 @@ npm run capture:design-ref
 |------|------|
 | [AGENTS.md](../AGENTS.md) | 六皮肤架构与日常 workflow |
 | [src/index.css](../src/index.css) | 六皮肤主题 CSS 变量 |
-| [src/hooks/useResumeData.ts](../src/hooks/useResumeData.ts) | 简历 Markdown → 结构化数据 |
-| [src/lib/parseResume.ts](../src/lib/parseResume.ts) | Markdown 解析逻辑 |
+| [content/site.json](../content/site.json) | 站点展示内容真相源 |
+| [src/hooks/useSiteContent.ts](../src/hooks/useSiteContent.ts) | 内容层 Hook |
+| [src/lib/parseResume.ts](../src/lib/parseResume.ts) | 简历 Markdown 解析（import 用） |
 | `design/refs/*.png` | 六皮肤参考截图（`npm run capture:design-ref` 生成，未提交时可空目录） |
 | `design/refs/layout.json` | 布局度量（同上，可再生） |
 | `design/archive/` | UI-Dark/Glass/Brutalist 旧稿 |
@@ -371,10 +389,10 @@ get_guidelines({ "category": "style", "name": "..." })
 
 ### Pencil 皮肤当前状态（2026-06）
 
-三套均已采用 **export_html + React 数据绑定**，各页入口：
+三套均已采用 **export_html + `useSiteContent()` 绑定**，各页入口：
 
 - [`ShadcnPencilPage.tsx`](../src/skins/pencil/shadcn/ShadcnPencilPage.tsx)
 - [`LunarisPencilPage.tsx`](../src/skins/pencil/lunaris/LunarisPencilPage.tsx)
 - [`HaloPencilPage.tsx`](../src/skins/pencil/halo/HaloPencilPage.tsx)
 
-均已脱离共享的 `ResumeSections`（Skill 皮肤仍使用 `ResumeSections`）。
+Skill 三皮肤共用 [`ContentBlocks.tsx`](../src/skins/shared/ContentBlocks.tsx) 块渲染；Pencil 三皮肤为各主题独立布局组件，数据均来自 `content/site.json`。

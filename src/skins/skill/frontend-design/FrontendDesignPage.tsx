@@ -1,11 +1,6 @@
 import { ThemeSwitcher } from "@/components/layout/ThemeSwitcher";
 import { SkinFooter, SkinHeader } from "@/skins/shared/SkinChrome";
-import {
-  ResumeAbout,
-  ResumeContact,
-  ResumeHero,
-  ResumeProjects,
-} from "@/skins/shared/ResumeSections";
+import { ContentBlocks } from "@/skins/shared/ContentBlocks";
 
 /** frontend-design 背景 / Editorial atmospheric background */
 function FdBackground() {
@@ -37,10 +32,7 @@ export function FrontendDesignPage() {
       <FdBackground />
       <SkinHeader className="bg-[rgba(12,10,9,0.85)]" />
       <main>
-        <ResumeHero layout="editorial" panelClass="skin-panel p-6" />
-        <ResumeAbout />
-        <ResumeProjects />
-        <ResumeContact />
+        <ContentBlocks heroLayout="editorial" heroPanelClass="skin-panel p-6" />
       </main>
       <SkinFooter />
       <ThemeSwitcher />

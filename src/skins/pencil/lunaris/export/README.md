@@ -7,21 +7,21 @@ Place `export_html` MCP output here (not committed; regenerate on re-export):
 
 ## Layer bindings
 
-See [`../layer-map.ts`](../layer-map.ts) for the full mapping. Summary:
+See [`../layer-map.ts`](../layer-map.ts) for content path mapping. Summary:
 
-| Layer | React binding |
-|-------|----------------|
-| `Hero/Headline` | `useResumeData().name` |
-| `Hero/Tagline` | `useResumeData().tagline` |
+| Layer | Site content binding |
+|-------|---------------------|
+| `Hero/Headline` | `blocks.hero.headline` |
+| `Hero/Tagline` | `blocks.hero.tagline` |
 | `Shell/AccentBar` | decorative |
-| `Hero/CTA` | anchor `#projects` |
-| `Section/About` | static title (accent color) |
-| `Card/About` | `summary[]` |
-| `Section/Projects` | static title |
-| `Card/Project` | `projects[]` |
-| `Section/Contact` | static title |
-| `Card/Contact/Email` | `email` |
-| `Card/Contact/Phone` | `phone` |
+| `Hero/CTA` | `blocks.hero.ctas[0]` |
+| `Section/About` | `blocks.about.title` |
+| `Card/About` | `blocks.about.summaryBullets[]` |
+| `Section/Projects` | `blocks.projects.title` |
+| `Card/Project` | `blocks.projects.items[]` |
+| `Section/Contact` | `blocks.contact.title` |
+| `Card/Contact/Email` | `blocks.contact.email` |
+| `Card/Contact/Phone` | `blocks.contact.phone` |
 
 ## Re-export workflow
 
@@ -33,6 +33,12 @@ See [`../layer-map.ts`](../layer-map.ts) for the full mapping. Summary:
    `c:/Users/47090/Desktop/personal/resume/src/skins/pencil/lunaris/export/desktop.html`
 
 5. Update **LAYOUT** classes in `components/Lunaris*.tsx`; keep **BINDINGS** per `layer-map.ts`
+
+## Content hydrate
+
+```bash
+npm run pen:hydrate:lunaris
+```
 
 Run helper: `node scripts/pen-export-theme.mjs lunaris`
 

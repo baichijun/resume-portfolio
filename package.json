@@ -11,9 +11,14 @@
     "deploy:cf": "npm run build && wrangler pages deploy dist",
     "deploy:cf:preview": "npm run build && wrangler pages deploy dist --branch=preview",
     "capture:design-ref": "node scripts/capture-design-ref.mjs",
+    "content:import": "tsx scripts/content-import-resume.ts --merge",
+    "content:import:fresh": "tsx scripts/content-import-resume.ts --fresh",
     "pen:export:shadcn": "node scripts/pen-export-theme.mjs shadcn",
     "pen:export:lunaris": "node scripts/pen-export-theme.mjs lunaris",
-    "pen:export:halo": "node scripts/pen-export-theme.mjs halo"
+    "pen:export:halo": "node scripts/pen-export-theme.mjs halo",
+    "pen:hydrate:halo": "tsx scripts/pen-hydrate-content.ts halo",
+    "pen:hydrate:lunaris": "tsx scripts/pen-hydrate-content.ts lunaris",
+    "pen:hydrate:shadcn": "tsx scripts/pen-hydrate-content.ts shadcn"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -31,6 +36,7 @@
     "cross-env": "^10.0.0",
     "playwright": "^1.61.1",
     "tailwindcss": "^4.1.12",
+    "tsx": "^4.22.4",
     "typescript": "~5.8.3",
     "vite": "^7.1.2",
     "wrangler": "^4.33.0"

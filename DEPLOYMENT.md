@@ -65,10 +65,11 @@
 ## 本地命令
 
 ```bash
-npm run dev          # 本地开发
-npm run build        # 生产构建（根路径 /）
-npm run preview      # 预览 dist
-npm run deploy:cf    # 手动部署 Cloudflare（需 wrangler login）
+npm run dev              # 本地开发
+npm run build            # 生产构建（根路径 /）
+npm run preview          # 预览 dist
+npm run content:import   # 简历 md → content/site.json（改内容后需 commit 再部署）
+npm run deploy:cf        # 手动部署 Cloudflare（需 wrangler login）
 ```
 
 ---

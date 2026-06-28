@@ -1,11 +1,6 @@
 import { ThemeSwitcher } from "@/components/layout/ThemeSwitcher";
 import { SkinFooter, SkinHeader } from "@/skins/shared/SkinChrome";
-import {
-  ResumeAbout,
-  ResumeContact,
-  ResumeHero,
-  ResumeProjects,
-} from "@/skins/shared/ResumeSections";
+import { ContentBlocks } from "@/skins/shared/ContentBlocks";
 
 /** design-taste 背景 / Editorial rule-line background */
 function TasteBackground() {
@@ -27,10 +22,7 @@ export function DesignTastePage() {
         className="border-b-2 border-[var(--theme-border)] bg-[var(--theme-bg)]"
       />
       <main>
-        <ResumeHero layout="split" panelClass="skin-panel-solid p-6" />
-        <ResumeAbout />
-        <ResumeProjects />
-        <ResumeContact />
+        <ContentBlocks heroLayout="split" heroPanelClass="skin-panel-solid p-6" />
       </main>
       <SkinFooter />
       <ThemeSwitcher />

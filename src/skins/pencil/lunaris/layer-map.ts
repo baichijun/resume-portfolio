@@ -1,22 +1,20 @@
-import { siteCopy } from "@/config/siteCopy";
-
-/** Layer 名 ↔ ResumeData 字段对照 / Pencil layer to resume data bindings */
+/** Layer 名 ↔ site content 路径对照 / Pencil layer to site content bindings */
 export const LUNARIS_LAYER_MAP = {
-  "Hero/Headline": "name",
-  "Hero/Tagline": "tagline",
+  "Hero/Headline": "blocks.hero.headline",
+  "Hero/Tagline": "blocks.hero.tagline",
   "Shell/AccentBar": "decorative",
-  "Hero/CTA": `anchor:${siteCopy.hero.ctaPrimaryHref}`,
-  "Section/About": `static:${siteCopy.sections.about.title}`,
-  "Card/About": "summary[]",
-  "Section/Projects": `static:${siteCopy.sections.projects.title}`,
-  "Card/Project": "projects[]",
-  "Card/Project/Title": "projects[].title",
-  "Card/Project/Meta": "projects[].period + projects[].company",
-  "Card/Project/Description": "projects[].description",
-  "Card/Project/Tags": "projects[].techStack[]",
-  "Section/Contact": `static:${siteCopy.sections.contact.title}`,
-  "Card/Contact/Email": "email",
-  "Card/Contact/Phone": "phone",
+  "Hero/CTA": "blocks.hero.ctas[0]",
+  "Section/About": "blocks.about.title",
+  "Card/About": "blocks.about.summaryBullets[]",
+  "Section/Projects": "blocks.projects.title",
+  "Card/Project": "blocks.projects.items[]",
+  "Card/Project/Title": "blocks.projects.items[].title",
+  "Card/Project/Meta": "blocks.projects.items[].period + company",
+  "Card/Project/Description": "blocks.projects.items[].description",
+  "Card/Project/Tags": "blocks.projects.items[].tags[]",
+  "Section/Contact": "blocks.contact.title",
+  "Card/Contact/Email": "blocks.contact.email",
+  "Card/Contact/Phone": "blocks.contact.phone",
 } as const;
 
 export type LunarisLayerName = keyof typeof LUNARIS_LAYER_MAP;

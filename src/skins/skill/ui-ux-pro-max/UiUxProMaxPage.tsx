@@ -1,11 +1,6 @@
 import { ThemeSwitcher } from "@/components/layout/ThemeSwitcher";
 import { SkinFooter, SkinHeader } from "@/skins/shared/SkinChrome";
-import {
-  ResumeAbout,
-  ResumeContact,
-  ResumeHero,
-  ResumeProjects,
-} from "@/skins/shared/ResumeSections";
+import { ContentBlocks } from "@/skins/shared/ContentBlocks";
 
 /** ui-ux-pro-max 背景 / Structured grid background for UX clarity */
 function UxBackground() {
@@ -26,10 +21,7 @@ export function UiUxProMaxPage() {
       <UxBackground />
       <SkinHeader className="bg-[rgba(11,18,32,0.92)]" />
       <main>
-        <ResumeHero layout="center" />
-        <ResumeAbout />
-        <ResumeProjects />
-        <ResumeContact />
+        <ContentBlocks heroLayout="center" />
       </main>
       <SkinFooter />
       <ThemeSwitcher />

@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { formatFooterText, siteCopy } from "@/config/siteCopy";
-import { NAV_ITEMS } from "@/config/navigation";
-import { useResumeData } from "@/hooks/useResumeData";
+import { siteCopy } from "@/config/siteCopy";
+import { getNavigationItems } from "@/config/navigation";
+import { formatContentTemplate, getHeroBlock } from "@/lib/siteContentUtils";
+import { useSiteContent } from "@/hooks/useSiteContent";
 
 interface SkinHeaderProps {
   className?: string;
   navClassName?: string;
 }
 
-/** 皮肤通用顶栏 / Shared sticky header; brand from resume name via site shell */
+/** 皮肤通用顶栏 / Shared sticky header; brand from site content hero */
 export function SkinHeader({ className, navClassName }: SkinHeaderProps) {
-  const { name } = useResumeData();
+  const content = useSiteContent();
+  const hero = getHeroBlock(content);
+  const navItems = getNavigationItems();
   const [open, setOpen] = useState(false);
   const { chrome } = siteCopy;
 
@@ -24,14 +27,14 @@ export function SkinHeader({ className, navClassName }: SkinHeaderProps) {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <a
-          href={siteCopy.nav.hero.href}
+          href="#hero"
           className="text-lg font-bold"
           style={{ fontFamily: "var(--theme-font-display)" }}
         >
-          {name}
+          {hero?.headline ?? siteCopy.missing.fallback}
         </a>
         <nav className={cn("hidden gap-6 md:flex", navClassName)}>
-          {NAV_ITEMS.map((item) => (
+          {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -53,7 +56,7 @@ export function SkinHeader({ className, navClassName }: SkinHeaderProps) {
       </div>
       {open && (
         <nav className="flex flex-col gap-2 border-t border-[var(--theme-border)] px-4 py-4 md:hidden">
-          {NAV_ITEMS.map((item) => (
+          {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -69,13 +72,15 @@ export function SkinHeader({ className, navClassName }: SkinHeaderProps) {
   );
 }
 
-/** 皮肤通用页脚 / Shared footer from site shell template */
+/** 皮肤通用页脚 / Shared footer from site content meta template */
 export function SkinFooter() {
-  const { name } = useResumeData();
+  const content = useSiteContent();
+  const hero = getHeroBlock(content);
+  const name = hero?.headline ?? "";
 
   return (
     <footer className="border-t border-[var(--theme-border)] px-4 py-10 text-center text-sm text-[var(--theme-text-muted)]">
-      {formatFooterText(name)}
+      {formatContentTemplate(content.meta.footer, { name })}
     </footer>
   );
 }

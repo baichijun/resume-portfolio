@@ -256,7 +256,6 @@ function collectPlaceholders(data: Omit<ResumeData, "placeholders">): string[] {
 
   if (!data.email) missing.push("电子邮箱");
   if (!data.phone) missing.push("联系电话");
-  missing.push("头像照片（public/images/avatar.jpg 或简历中增加头像字段）");
   missing.push("GitHub 个人主页链接");
   missing.push("社交媒体链接（LinkedIn / 微信等）");
 

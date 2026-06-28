@@ -1,30 +1,27 @@
-import { siteCopy } from "@/config/siteCopy";
-import type { ResumeProject } from "@/types/resume";
-import { useResumeData } from "@/hooks/useResumeData";
+import { getProjectDisplayTags, getProjectsBlock } from "@/lib/siteContentUtils";
+import { useSiteContent } from "@/hooks/useSiteContent";
+import type { ProjectItem } from "@/types/siteContent";
 
 // LAYOUT: from export/desktop.html (2026-06-28)
 // BINDINGS: see layer-map.ts — Section/Projects, Card/Project
 
 /** 单项目卡片 / Single project card from Card/Project template */
-function LunarisProjectCard({ project }: { project: ResumeProject }) {
-  const tags =
-    project.techStack.length > 0
-      ? project.techStack
-      : project.highlights.slice(0, 2);
+function LunarisProjectCard({ project }: { project: ProjectItem }) {
+  const tags = getProjectDisplayTags(project);
 
   return (
     <article
       data-pencil-name="Card/Project"
-      className="box-border flex h-fit min-w-0 flex-1 flex-col gap-3 rounded-[var(--theme-radius)] border border-[var(--theme-border)] bg-[var(--theme-card)] p-6"
+      className="box-border flex h-fit min-w-0 flex-1 flex-col gap-3 rounded-[var(--theme-radius)] border border-[var(--theme-border)] bg-[var(--theme-card)] p-7"
     >
       <div
         data-pencil-name="Shell/AccentBar"
-        className="h-[3px] w-12 shrink-0 rounded-sm bg-[var(--theme-accent)]"
+        className="h-1 w-10 shrink-0 rounded-sm bg-[var(--theme-accent)]"
         aria-hidden
       />
       <h3
         data-pencil-name="Title"
-        className="text-lg font-semibold text-[var(--theme-text)]"
+        className="text-lg font-bold text-[var(--theme-text)]"
         style={{ fontFamily: "var(--theme-font-display)" }}
       >
         {project.title}
@@ -69,8 +66,10 @@ function LunarisProjectCard({ project }: { project: ResumeProject }) {
 
 /** Lunaris 项目经历 / Projects section aligned to Pencil export */
 export function LunarisProjects() {
-  const data = useResumeData();
-  const { projects } = siteCopy.sections;
+  const content = useSiteContent();
+  const projects = getProjectsBlock(content);
+
+  if (!projects) return null;
 
   return (
     <section
@@ -81,7 +80,7 @@ export function LunarisProjects() {
       <div className="mx-auto flex max-w-6xl flex-col gap-6">
         <h2
           data-pencil-name="Section/Projects"
-          className="text-2xl font-semibold text-[var(--theme-accent)] sm:text-[28px]/[normal]"
+          className="text-2xl font-bold text-[var(--theme-accent)] sm:text-[32px]/[normal]"
           style={{ fontFamily: "var(--theme-font-display)" }}
         >
           {projects.title}
@@ -90,7 +89,7 @@ export function LunarisProjects() {
           data-pencil-name="Section/Projects/List"
           className="box-border grid w-full shrink-0 grid-cols-1 gap-6 md:grid-cols-2"
         >
-          {data.projects.map((project) => (
+          {projects.items.map((project) => (
             <LunarisProjectCard key={project.title} project={project} />
           ))}
         </div>
