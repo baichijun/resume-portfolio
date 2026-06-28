@@ -1,11 +1,9 @@
 import { ThemeSwitcher } from "@/components/layout/ThemeSwitcher";
 import { SkinFooter, SkinHeader } from "@/skins/shared/SkinChrome";
-import {
-  ResumeAbout,
-  ResumeContact,
-  ResumeHero,
-  ResumeProjects,
-} from "@/skins/shared/ResumeSections";
+import { HaloAbout } from "@/skins/pencil/halo/components/HaloAbout";
+import { HaloContact } from "@/skins/pencil/halo/components/HaloContact";
+import { HaloHero } from "@/skins/pencil/halo/components/HaloHero";
+import { HaloProjects } from "@/skins/pencil/halo/components/HaloProjects";
 
 function HaloBackground() {
   return (
@@ -22,11 +20,11 @@ export function HaloPencilPage() {
     <>
       <HaloBackground />
       <SkinHeader className="border-indigo-100 bg-white/70" brand="Halo" />
-      <main className="[&_.skin-panel]:rounded-2xl [&_.skin-panel]:border-indigo-100 [&_.skin-panel]:backdrop-blur-sm">
-        <ResumeHero layout="center" />
-        <ResumeAbout />
-        <ResumeProjects />
-        <ResumeContact />
+      <main className="flex flex-col gap-12 lg:gap-[48px]">
+        <HaloHero />
+        <HaloAbout />
+        <HaloProjects />
+        <HaloContact />
       </main>
       <SkinFooter>Pencil · Halo Design System</SkinFooter>
       <ThemeSwitcher />
